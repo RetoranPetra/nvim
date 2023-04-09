@@ -5,11 +5,15 @@ function preferences.setup()
 	-- Set tab size
 	vim.opt.tabstop=4
 	vim.opt.shiftwidth=4
-	--vim.opt.termguicolors = true
-	--vim.cmd[[colorscheme nightfly]]
-	-- Change nightfly settings
-	--vim.g.nightflyTransparent = true
-	--vim.g.nightflyCursorColor = true
-	--vim.g.nightflyItalics = true
+
+	vim.opt.clipboard = vim.opt.clipboard + "unnamed"
+	vim.opt.paste = true
+
+	vim.keymap.set({'n','v'}, '<leader>p', '"+p')
+	vim.keymap.set({'n','v'}, '<leader>P', '"+P')
+	vim.keymap.set({'n','v'}, '<leader>y', '"+y')
+	vim.keymap.set({'n','v'}, '<leader>Y', '"+Y')
+	vim.keymap.set('n','<C-S-c>', '"*y')
+	vim.keymap.set('n','<C-S-v>', '"*p')
 end
 return preferences
