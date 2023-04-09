@@ -17,15 +17,14 @@ lua << EOF
 	--package.loaded['plugins'] = nil
 	require('plugins')
 	--package.loaded['preferences'] = nil
-	require('preferences')
-
+	require('preferences').setup()
 	--print("All loaded successfully!")
+	require('myCmp').setup()
 EOF
 
 "Unify clipboard
 set clipboard+=unnamed 	"use clipboards of vim and win
 set paste "paste from a windows or vim
-
 "Change nvim copy/paste to use system copy/paste
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
