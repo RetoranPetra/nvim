@@ -68,13 +68,10 @@ local function myCmpSetup()
 		}),
 
 		sources = cmp.config.sources(
-			{
-				{ name = "nvim_lsp"},
-				{ name = "luasnip"},
-			},
-			{
-			{ name = "buffer" },
-			}
+			{ name = "nvim_lsp"},
+			{ name = "luasnip"},
+			-- My stuff
+			{ name = "buffer" }
 		),
 
 	  -- ... Your other configuration ...
@@ -119,6 +116,16 @@ end
 local function myLsp()
 	-- Set up lspconfig.
 	local capabilities = require('cmp_nvim_lsp').default_capabilities()
+	local servers = {
+		'clangd','rust_analyzer','pylsp','cmake',
+		'texlab','jsonls','lua_ls','vimls'
+	}
+	for _, lsp in ipairs(servers) do
+		lspconfig[lsp].setup {
+			capabilities = capabilities
+		}
+	end
+	--[[
 	require('lspconfig')['clangd'].setup {
 	capabilities = capabilities
 	}
@@ -146,6 +153,14 @@ local function myLsp()
 	require('lspconfig')['vimls'].setup {
 	capabilities = capabilities
 	}
+	--]]
+end
+
+local function myLuaSnip()
+	luasnip.config.set_config {
+		updateevents = "TextChanged,TextChangedI",
+		history = true
+	}
 end
 
 function myCmp.setup()
@@ -153,6 +168,7 @@ function myCmp.setup()
 	myFileTypes()
 	myCmdLine()
 	myLsp()
+	myLuaSnip()
 end
 
 return myCmp

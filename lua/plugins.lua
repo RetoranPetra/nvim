@@ -18,14 +18,23 @@ return require('packer').startup(function(use)
 	-- Colour scheme
 	use {'bluz71/vim-nightfly-colors', as = 'nightfly',
 		config = function()
-			vim.opt.termguicolors = true
 			vim.g.nightflyTransparent = true
 			vim.g.nightflyCursorColor = true
 			vim.g.nightflyItalics = true
-			vim.cmd[[highlight normal ctermbg=none]]
 			vim.cmd[[colorscheme nightfly]]
 		end
-	}	
+	}
+
+
+	-- Other UI
+	vim.g.neo_tree_remove_legacy_commands = true
+	use {'nvim-neo-tree/neo-tree.nvim',
+		requires = {
+		'nvim-lua/plenary.nvim',
+		'nvim-tree/nvim-web-devicons',
+		'MunifTanjim/nui.nvim'
+		}
+	}
 
 	-- Completion
 	use {'hrsh7th/nvim-cmp',
@@ -40,6 +49,9 @@ return require('packer').startup(function(use)
 			requires = {"saadparwaiz1/cmp_luasnip"}
 			--,config = function() require("myCmp").setup() end
 		},
+		config = function ()
+			vim.opt.completeopt = {"menu","menuone","noselect"}
+		end
 		}
 	}
 	-- Syntax Highlighting
@@ -47,8 +59,26 @@ return require('packer').startup(function(use)
 	{
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-		config = function() require('myTreesitter') end
+		config = function() require('myTreesitter').setup() end
     }
+	use {'norcalli/nvim-colorizer.lua',
+		config = function () require("colorizer").setup() end
+	}
+
+	-- Git stuff
+	use {'tpope/vim-fugitive'}
+	use {'lewis6991/gitsigns.nvim',
+		config = function()
+			require("gitsigns").setup()
+		end
+	}
+	-- Build management
+	use {'shatur/neovim-tasks',
+		requires = {'nvim-lua/plenary.nvim','mfussenegger/nvim-dap'}
+	}
+
+
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

@@ -1,5 +1,9 @@
 local preferences = {}
 function preferences.setup()
+	-- Lets vim know it can use all the colors
+	vim.opt.termguicolors = true
+	-- Forces transparency
+	vim.cmd[[highlight normal ctermbg=none]]
 	-- Add number lines
 	vim.opt.number = true
 	-- Set tab size
