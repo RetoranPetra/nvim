@@ -21,7 +21,7 @@ local function myCmpSetup()
 			end
 		},
 		window = {
-			-- completion = cmp.config.window.bordered(),
+			--completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		},
 
@@ -38,30 +38,39 @@ local function myCmpSetup()
 					cmp.select_next_item(select_opts)
 					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
 					-- they way you will only jump inside the snippet region
+					print("Visible!")
 				elseif luasnip.expand_or_jumpable() then
 					luasnip.expand_or_jump()
+					print("Lua-snippable")
 				elseif has_words_before() then
 					cmp.complete()
+					print("Has words before!")
 				else
 					fallback()
+					print("Gave up, used default")
 				end
 			end, { "i", "s" }),
 
 			['<S-Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item(select_opts)
+					print("Visible!")
 				elseif luasnip.jumpable(-1) then
 					luasnip.jump(-1)
+					print("Lua-snippable")
 				else
 					fallback()
+					print("Gave up, used default")
 				end
 			end, { "i", "s" }),
 			['<CR>'] = cmp.mapping({
 				i = function(fallback)
 					if cmp.visible() and cmp.get_active_entry() then
 						cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+						print("Visible, attempting insert")
 					else
 						fallback()
+						print("Not visible, not attempting insert")
 					end
 				end,
 				s = cmp.mapping.confirm({ select = true }),
