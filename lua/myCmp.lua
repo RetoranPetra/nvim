@@ -3,6 +3,7 @@ local myCmp = {}
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
+local select_opts = {behavior = cmp.SelectBehavior.Select}
 
 local has_words_before = function()
   unpack = unpack or table.unpack
@@ -19,22 +20,22 @@ local function myCmpSetup()
 				require('luasnip').lsp_expand(args.body)
 			end
 		},
-		--[[
 		window = {
 			-- completion = cmp.config.window.bordered(),
-			-- documentation = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
 		},
-		--]]
 
 		mapping = cmp.mapping.preset.insert({
 			-- Simple mappings
-			['<C-j>'] = cmp.mapping.select_next_item(),
-			['<C-k>'] = cmp.mapping.select_prev_item(),
+			['<C-j>'] = cmp.mapping.select_next_item(select_opts),
+			['<C-k>'] = cmp.mapping.select_prev_item(select_opts),
+			['<C-f>'] = cmp.mapping.scroll_docs(4),
+			['<C-d>'] = cmp.mapping.scroll_docs(-4),
 			['<C-e>'] = cmp.mapping.abort(),
 			-- Advanced Mappings
 			['<Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
-					cmp.select_next_item()
+					cmp.select_next_item(select_opts)
 					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
 					-- they way you will only jump inside the snippet region
 				elseif luasnip.expand_or_jumpable() then
@@ -48,7 +49,7 @@ local function myCmpSetup()
 
 			['<S-Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
-					cmp.select_prev_item()
+					cmp.select_prev_item(select_opts)
 				elseif luasnip.jumpable(-1) then
 					luasnip.jump(-1)
 				else
@@ -70,13 +71,34 @@ local function myCmpSetup()
 
 		sources = cmp.config.sources(
 			-- Order of priority of sources
-			{ name = "nvim_lsp"},
-			{ name = "luasnip" },
-			-- My stuff
-			{ name = "buffer" },
-			{ name = "path" }
-		)
-		-- ... Your other configuration ...
+			-- Group 1, don't show lower group unless exhausted.
+			{
+				{ name = "nvim_lsp"},
+				{ name = "luasnip" },
+			},
+			-- Group 2, etc.
+			{
+				{ name = "buffer" },
+			},
+			{
+				{ name = "path" },
+			}
+		),
+		-- Define how the menu is displayed
+		formatting = {
+			fields = {'menu','abbr','kind'},
+			format = function(entry, item)
+				local menu_icon = {
+					nvim_lsp = 'λ',
+					luasnip = '⋗',
+					buffer = 'Ω',
+					path = '🖫'
+				}
+				item.menu = menu_icon[entry.source.name]
+				return item
+			end,
+		}
+
 	})
 end
 local function myFileTypes()

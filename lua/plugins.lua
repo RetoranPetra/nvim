@@ -31,11 +31,10 @@ return require('packer').startup(function(use)
 			vim.g.nightflyTransparent = true
 			vim.g.nightflyCursorColor = true
 			vim.g.nightflyItalics = true
-			vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE"})
+			vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE", fg = "#c3ccdc"})
 			vim.cmd[[colorscheme nightfly]]
 		end
 	}
-
 
 	-- Other UI
 	vim.g.neo_tree_remove_legacy_commands = true
@@ -48,7 +47,7 @@ return require('packer').startup(function(use)
 	}
 
 	-- Completion
-	use {'hrsh7th/nvim-cmp', as = 'nvim-cmp', 
+	use {'hrsh7th/nvim-cmp', as = 'nvim-cmp',
 		requires = {
 			{'neovim/nvim-lspconfig', requires = {'hrsh7th/cmp-nvim-lsp'}},
 			{'hrsh7th/cmp-buffer'},
