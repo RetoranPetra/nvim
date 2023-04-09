@@ -18,19 +18,22 @@ local function myCmpSetup()
 			--MUST SPECIFY SNIPPET ENGINE
 			expand = function(args)
 				require('luasnip').lsp_expand(args.body)
-			end,
+			end
 		},
-		--No clue what these do, enabling one anyway.
+		--[[
 		window = {
 			-- completion = cmp.config.window.bordered(),
 			-- documentation = cmp.config.window.bordered(),
 		},
-
-		-- ... Your other configuration ...
+		--]]
 
 		mapping = cmp.mapping.preset.insert({
+			-- Simple mappings
+			['<C-j>'] = cmp.mapping.select_next_item(),
+			['<C-k>'] = cmp.mapping.select_prev_item(),
+			['<C-e>'] = cmp.mapping.abort(),
 			-- Advanced Mappings
-			["<Tab>"] = cmp.mapping(function(fallback)
+			['<Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_next_item()
 					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
@@ -44,7 +47,7 @@ local function myCmpSetup()
 				end
 			end, { "i", "s" }),
 
-			["<S-Tab>"] = cmp.mapping(function(fallback)
+			['<S-Tab>'] = cmp.mapping(function(fallback)
 				if cmp.visible() then
 					cmp.select_prev_item()
 				elseif luasnip.jumpable(-1) then
@@ -53,8 +56,7 @@ local function myCmpSetup()
 					fallback()
 				end
 			end, { "i", "s" }),
-			["<C-e>"] = cmp.mapping.abort(),
-			["<CR>"] = cmp.mapping({
+			['<CR>'] = cmp.mapping({
 				i = function(fallback)
 					if cmp.visible() and cmp.get_active_entry() then
 						cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
@@ -68,13 +70,14 @@ local function myCmpSetup()
 		}),
 
 		sources = cmp.config.sources(
+			-- Order of priority of sources
 			{ name = "nvim_lsp"},
-			{ name = "luasnip"},
+			{ name = "luasnip" },
 			-- My stuff
-			{ name = "buffer" }
-		),
-
-	  -- ... Your other configuration ...
+			{ name = "buffer" },
+			{ name = "path" }
+		)
+		-- ... Your other configuration ...
 	})
 end
 local function myFileTypes()
@@ -125,35 +128,6 @@ local function myLsp()
 			capabilities = capabilities
 		}
 	end
-	--[[
-	require('lspconfig')['clangd'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['rust_analyzer'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['pylsp'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['bashls'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['cmake'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['texlab'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['jsonls'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['lua_ls'].setup {
-	capabilities = capabilities
-	}
-	require('lspconfig')['vimls'].setup {
-	capabilities = capabilities
-	}
-	--]]
 end
 
 local function myLuaSnip()
@@ -168,7 +142,7 @@ function myCmp.setup()
 	myFileTypes()
 	myCmdLine()
 	myLsp()
-	myLuaSnip()
+	--myLuaSnip()
 end
 
 return myCmp

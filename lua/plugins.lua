@@ -13,6 +13,16 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+-- Reload configurations if we modify plugins.lua
+-- Hint
+--     <afile> - replaced with the filename of the buffer being manipulated
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	-- Colour scheme
@@ -21,6 +31,7 @@ return require('packer').startup(function(use)
 			vim.g.nightflyTransparent = true
 			vim.g.nightflyCursorColor = true
 			vim.g.nightflyItalics = true
+			vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE"})
 			vim.cmd[[colorscheme nightfly]]
 		end
 	}
@@ -28,7 +39,7 @@ return require('packer').startup(function(use)
 
 	-- Other UI
 	vim.g.neo_tree_remove_legacy_commands = true
-	use {'nvim-neo-tree/neo-tree.nvim',
+	use {'nvim-neo-tree/neo-tree.nvim', after = 'nightfly',
 		requires = {
 		'nvim-lua/plenary.nvim',
 		'nvim-tree/nvim-web-devicons',
@@ -37,23 +48,14 @@ return require('packer').startup(function(use)
 	}
 
 	-- Completion
-	use {'hrsh7th/nvim-cmp',
-		requires = {{'neovim/nvim-lspconfig'},{'hrsh7th/cmp-nvim-lsp'},
-		{'hrsh7th/cmp-buffer'},{'hrsh7th/cmp-path'},
-		{'hrsh7th/cmp-cmdline'},
-		-- Snippet
-		{"L3MON4D3/LuaSnip",
-			-- Get major release
-			--tag = "v<CurrentMajor>.*",
-			run = "make install_jsregexp",
-			requires = {"saadparwaiz1/cmp_luasnip"}
-			--,config = function() require("myCmp").setup() end
-		},
-		config = function ()
-			vim.opt.completeopt = {"menu","menuone","noselect"}
-		end
-		}
-	}
+	use {'neovim/nvim-lspconfig'}
+	use {'hrsh7th/nvim-cmp'}
+	use {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', requires = {'nvim-lspconfig'}}
+	use {'hrsh7th/cmp-buffer', after = 'nvim-cmp'}
+	use {'hrsh7th/cmp-path', after = 'nvim-cmp'}
+	use {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'}
+	use {'L3MON4D3/LuaSnip', run = "make install_jsregexp"}
+	use {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp', requires = {'L3MON4D3/LuaSnip'}}
 	-- Syntax Highlighting
 	use
 	{
