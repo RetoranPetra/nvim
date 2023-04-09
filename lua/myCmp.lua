@@ -3,7 +3,6 @@ local myCmp = {}
 
 local luasnip = require("luasnip")
 local cmp = require("cmp")
-local lspconfig = require("lspconfig")
 
 local has_words_before = function()
   unpack = unpack or table.unpack
@@ -123,6 +122,7 @@ local function myLsp()
 		'clangd','rust_analyzer','pylsp','cmake',
 		'texlab','jsonls','lua_ls','vimls'
 	}
+	local lspconfig = require("lspconfig")
 	for _, lsp in ipairs(servers) do
 		lspconfig[lsp].setup {
 			capabilities = capabilities
