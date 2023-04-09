@@ -49,13 +49,16 @@ return require('packer').startup(function(use)
 
 	-- Completion
 	use {'neovim/nvim-lspconfig'}
-	use {'hrsh7th/nvim-cmp'}
-	use {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp', requires = {'nvim-lspconfig'}}
-	use {'hrsh7th/cmp-buffer', after = 'nvim-cmp'}
-	use {'hrsh7th/cmp-path', after = 'nvim-cmp'}
-	use {'hrsh7th/cmp-cmdline', after = 'nvim-cmp'}
-	use {'L3MON4D3/LuaSnip', run = "make install_jsregexp"}
-	use {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp', requires = {'L3MON4D3/LuaSnip'}}
+	use {'hrsh7th/nvim-cmp', requires = {
+		{'hrsh7th/cmp-nvim-lsp', requires = {'nvim-lspconfig'}, after = 'nvim-cmp'},
+		{'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
+		{'hrsh7th/cmp-path', after = 'nvim-cmp'},
+		{'hrsh7th/cmp-cmdline', after = 'nvim-cmp'},
+		{'L3MON4D3/LuaSnip', run = "make install_jsregexp"},
+		{'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp', requires = {'L3MON4D3/LuaSnip'}}
+	},
+	after = 'neovim/nvim-lspconfig'
+	}
 	-- Syntax Highlighting
 	use
 	{
