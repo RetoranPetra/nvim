@@ -1,5 +1,26 @@
-lua require('plugins')
-lua require('preferences')
+lua << EOF
+	--[[
+	-- Error checking for loading "plugins"
+	local ok, plug = pcall(require,'plugins')
+	if not ok then 
+		print("Plugins had an error!")
+	else
+		plug.function()
+	end
+	local ok, pref = pcall(require,'preferences')
+	if not ok then
+		print("Preferences had an error!")
+	else
+		pref.function()
+	end
+	--]]
+	--package.loaded['plugins'] = nil
+	require('plugins')
+	--package.loaded['preferences'] = nil
+	require('preferences')
+
+	--print("All loaded successfully!")
+EOF
 
 "Unify clipboard
 set clipboard+=unnamed 	"use clipboards of vim and win
