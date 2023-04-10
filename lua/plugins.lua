@@ -45,7 +45,8 @@ return require('packer').startup(function(use)
 		end
 	}
 
-	use {'L3MON4D3/LuaSnip', as='LuaSnip'}
+	use {'L3MON4D3/LuaSnip', as='LuaSnip',
+	config = function() require('luasnip.loaders.from_vscode').lazy_load() end}
 	use { 'hrsh7th/nvim-cmp', after='LuaSnip', config = function() require('config.nvimcmp').setup() end}
 	use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completion
 	use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completion
@@ -57,8 +58,7 @@ return require('packer').startup(function(use)
 		config = function() require('config.lsp').setup() end,
 		after = {'nvim-cmp', 'lspconfig'}
 	}
-
-	--[[
+	--NON-CRITICAL
 	-- Other UI
 	vim.g.neo_tree_remove_legacy_commands = true
 	use {'nvim-neo-tree/neo-tree.nvim', after = 'nightfly',
@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
 	{
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-		config = function() require('myTreesitter').setup() end
+		config = function() require('config.treesitter').setup() end
     }
 	use {'norcalli/nvim-colorizer.lua',
 		config = function () require("colorizer").setup() end
@@ -91,7 +91,7 @@ return require('packer').startup(function(use)
 	use {'shatur/neovim-tasks',
 		requires = {'nvim-lua/plenary.nvim','mfussenegger/nvim-dap'}
 	}
-	-]]
+	--NON-CRITICAL END
 
 	if packer_bootstrap then
 		require("packer").sync()
