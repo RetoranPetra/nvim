@@ -18,14 +18,11 @@ function preferences.setup()
 	vim.opt.mouse = 'a'
 
 	-- Alter search
-	vim.opt.hlsearch = false
+	--vim.opt.hlsearch = false
 
 	-- Clipboard stuff
 	vim.opt.clipboard = 'unnamedplus' --use system clipboard
 	vim.opt.paste = true
-
-
-
 	vim.keymap.set({'n','v'}, '<leader>p', '"+p', {noremap = true})
 	vim.keymap.set({'n','v'}, '<leader>P', '"+P', {noremap = true})
 	vim.keymap.set({'n','v'}, '<leader>y', '"+y', {noremap = true})

@@ -1,17 +1,17 @@
-vim.cmd[[packadd packer.nvim]]
-
+-- Install Packer automatically if it's not installed(Bootstraping)
+-- Hint: string concatenation is done by `..`
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
-
 local packer_bootstrap = ensure_packer()
+
 
 -- Reload configurations if we modify plugins.lua
 -- Hint
@@ -23,19 +23,42 @@ vim.cmd([[
   augroup end
 ]])
 
+
+-- Install plugins here - `use ...`
+-- Packer.nvim hints
+--     after = string or list,           -- Specifies plugins to load before this plugin. See "sequencing" below
+--     config = string or function,      -- Specifies code to run after this plugin is loaded
+--     requires = string or list,        -- Specifies plugin dependencies. See "dependencies". 
+--     ft = string or list,              -- Specifies filetypes which load this plugin.
+--     run = string, function, or table, -- Specify operations to be run after successful installs/updates of a plugin
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	-- Colour scheme
+
 	use {'bluz71/vim-nightfly-colors', as = 'nightfly',
 		config = function()
 			vim.g.nightflyTransparent = true
 			vim.g.nightflyCursorColor = true
 			vim.g.nightflyItalics = true
 			vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE", fg = "#c3ccdc"})
-			vim.cmd[[colorscheme nightfly]]
+			vim.cmd.colorscheme('nightfly')
 		end
 	}
 
+	use {'L3MON4D3/LuaSnip', as='LuaSnip'}
+	use { 'hrsh7th/nvim-cmp', after='LuaSnip', config = function() require('config.nvimcmp').setup() end}
+	use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completion
+	use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completion
+	use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
+	use {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'}
+
+	use {'neovim/nvim-lspconfig', as = 'lspconfig'}
+	use { 'hrsh7th/cmp-nvim-lsp',
+		config = function() require('config.lsp').setup() end,
+		after = {'nvim-cmp', 'lspconfig'}
+	}
+
+	--[[
 	-- Other UI
 	vim.g.neo_tree_remove_legacy_commands = true
 	use {'nvim-neo-tree/neo-tree.nvim', after = 'nightfly',
@@ -46,25 +69,6 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	-- Completion
-	use {'folke/neodev.nvim', as = 'neodev',
-	require = function()
-		require('neodev').setup({})
-	end}
-
-	use {'hrsh7th/nvim-cmp', as = 'nvim-cmp',
-		--branch = 'LSP-3.17',
-		--commit = 'a9c701fa7e12e9257b3162000e5288a75d280c28',
-		requires = {
-			{'neovim/nvim-lspconfig', requires = {'hrsh7th/cmp-nvim-lsp'},after = {'neodev'}},
-			{'hrsh7th/cmp-buffer'},
-			{'hrsh7th/cmp-path'},
-			{'hrsh7th/cmp-cmdline'},
-			{'saadparwaiz1/cmp_luasnip', requires = {'L3MON4D3/LuaSnip', run = "make install_jsregexp"}}
-		},
-		config = function()
-		end
-	}
 	-- Syntax Highlighting
 	use
 	{
@@ -87,6 +91,7 @@ return require('packer').startup(function(use)
 	use {'shatur/neovim-tasks',
 		requires = {'nvim-lua/plenary.nvim','mfussenegger/nvim-dap'}
 	}
+	-]]
 
 	if packer_bootstrap then
 		require("packer").sync()
