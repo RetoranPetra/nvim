@@ -25,17 +25,17 @@ local function myCmpSetup()
 			documentation = cmp.config.window.bordered(),
 		},
 		mapping = {
-			['<Up>'] = cmp.mapping.select_prev_item(select_opts),
-			['<Down>'] = cmp.mapping.select_next_item(select_opts),
+			['<Up>'] = cmp.mapping.select_prev_item {behavior = cmp.SelectBehavior.Select},
+			['<Down>'] = cmp.mapping.select_next_item {behavior = cmp.SelectBehavior.Select},
 
-			['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
-			['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+			['<C-p>'] = cmp.mapping.select_prev_item {behavior = cmp.SelectBehavior.Insert},
+			['<C-n>'] = cmp.mapping.select_next_item {behavior = cmp.SelectBehavior.Insert},
 
 			['<C-u>'] = cmp.mapping.scroll_docs(-4),
 			['<C-d>'] = cmp.mapping.scroll_docs(4),
 
 			['<C-e>'] = cmp.mapping.abort(),
-			['<C-y>'] = cmp.mapping.confirm({select = true}),
+			--['<C-y>'] = cmp.mapping.confirm({select = true}),
 			['<CR>'] = cmp.mapping.confirm({select = false}),
 
 			['<C-f>'] = cmp.mapping(function(fallback)
@@ -58,7 +58,7 @@ local function myCmpSetup()
 			  local col = vim.fn.col('.') - 1
 
 			  if cmp.visible() then
-				cmp.select_next_item(select_opts)
+				cmp.select_next_item {behavior = cmp.SelectBehavior.Insert}
 			  elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
 				fallback()
 			  else
@@ -68,7 +68,7 @@ local function myCmpSetup()
 
 			['<S-Tab>'] = cmp.mapping(function(fallback)
 			  if cmp.visible() then
-				cmp.select_prev_item(select_opts)
+				cmp.select_prev_item {behavior = cmp.SelectBehavior.Insert}
 			  else
 				fallback()
 			  end
@@ -215,6 +215,7 @@ local function myLsp()
 	for _, lsp in ipairs(servers) do
 		lspconfig[lsp].setup({
 			capabilities = lsp_defaults.capabilities
+			--on_attach = function(client,bufnr) vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc') end
 		})
 	end
 end

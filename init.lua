@@ -3,11 +3,14 @@ require('preferences').setup()
 -- Plugin initialisation and setup (for the most part)
 require('plugins')
 -- Initialise here for more feedback
-
+require('myCmp').setup()
 -- This works great, tab completion/any completion still does not.
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
+  	-- fuck it, add that shit to the omnifunc buffer. This shouldn't work.
+  	--vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+	-- If this doesn't work, it will remain as a mark of shame forever.
     local bufmap = function(mode, lhs, rhs)
       local opts = {buffer = true}
       vim.keymap.set(mode, lhs, rhs, opts)

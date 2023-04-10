@@ -47,16 +47,22 @@ return require('packer').startup(function(use)
 	}
 
 	-- Completion
+	use {'folke/neodev.nvim', as = 'neodev',
+	require = function()
+		require('neodev').setup({})
+	end}
+
 	use {'hrsh7th/nvim-cmp', as = 'nvim-cmp',
+		--branch = 'LSP-3.17',
+		--commit = 'a9c701fa7e12e9257b3162000e5288a75d280c28',
 		requires = {
-			{'neovim/nvim-lspconfig', requires = {'hrsh7th/cmp-nvim-lsp'}},
+			{'neovim/nvim-lspconfig', requires = {'hrsh7th/cmp-nvim-lsp'},after = {'neodev'}},
 			{'hrsh7th/cmp-buffer'},
 			{'hrsh7th/cmp-path'},
 			{'hrsh7th/cmp-cmdline'},
 			{'saadparwaiz1/cmp_luasnip', requires = {'L3MON4D3/LuaSnip', run = "make install_jsregexp"}}
 		},
 		config = function()
-			require('myCmp').setup()
 		end
 	}
 	-- Syntax Highlighting

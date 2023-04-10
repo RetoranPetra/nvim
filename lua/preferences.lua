@@ -10,6 +10,7 @@ function preferences.setup()
 	-- Add number lines
 	--vim.opt.number = true
 	vim.opt.relativenumber = true
+	vim.opt.number = true
 	-- Set tab size
 	vim.opt.tabstop=4
 	vim.opt.shiftwidth=4
