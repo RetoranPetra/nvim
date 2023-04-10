@@ -53,7 +53,14 @@ return require('packer').startup(function(use)
 	use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
 	use {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'}
 
-	use {'neovim/nvim-lspconfig', as = 'lspconfig'}
+
+	-- lspconfig needs neodev as of the moment.
+	use {'folke/neodev.nvim', as = 'neodev',
+	--config = function () require("neodev").setup({}) end
+	}
+
+	use {'neovim/nvim-lspconfig', as = 'lspconfig', after = 'neodev'}
+
 	use { 'hrsh7th/cmp-nvim-lsp',
 		config = function() require('config.lsp').setup() end,
 		after = {'nvim-cmp', 'lspconfig'}

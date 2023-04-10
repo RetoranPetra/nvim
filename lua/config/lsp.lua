@@ -8,6 +8,7 @@ local lspconfig = require('lspconfig')
 local cmp_lsp = require('cmp_nvim_lsp')
 
 local function serverSetup()
+	require("neodev").setup({})
 	--Set up default capabilities
 	local lsp_defaults = lspconfig.util.default_config
 	lsp_defaults.capabilities = vim.tbl_deep_extend(
