@@ -24,7 +24,57 @@ local function myCmpSetup()
 			--completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		},
+		mapping = {
+			['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+			['<Down>'] = cmp.mapping.select_next_item(select_opts),
 
+			['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
+			['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+
+			['<C-u>'] = cmp.mapping.scroll_docs(-4),
+			['<C-d>'] = cmp.mapping.scroll_docs(4),
+
+			['<C-e>'] = cmp.mapping.abort(),
+			['<C-y>'] = cmp.mapping.confirm({select = true}),
+			['<CR>'] = cmp.mapping.confirm({select = false}),
+
+			['<C-f>'] = cmp.mapping(function(fallback)
+			  if luasnip.jumpable(1) then
+				luasnip.jump(1)
+			  else
+				fallback()
+			  end
+			end, {'i', 's'}),
+
+			['<C-b>'] = cmp.mapping(function(fallback)
+			  if luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			  else
+				fallback()
+			  end
+			end, {'i', 's'}),
+
+			['<Tab>'] = cmp.mapping(function(fallback)
+			  local col = vim.fn.col('.') - 1
+
+			  if cmp.visible() then
+				cmp.select_next_item(select_opts)
+			  elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+				fallback()
+			  else
+				cmp.complete()
+			  end
+			end, {'i', 's'}),
+
+			['<S-Tab>'] = cmp.mapping(function(fallback)
+			  if cmp.visible() then
+				cmp.select_prev_item(select_opts)
+			  else
+				fallback()
+			  end
+			end, {'i', 's'}),
+		  },
+  --[[
 		mapping = cmp.mapping.preset.insert({
 			-- Simple mappings
 			['<C-j>'] = cmp.mapping.select_next_item(select_opts),
@@ -77,6 +127,7 @@ local function myCmpSetup()
 				c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 			}),
 		}),
+--]]
 
 		sources = cmp.config.sources(
 			-- Order of priority of sources
@@ -148,24 +199,34 @@ end
 
 local function myLsp()
 	-- Set up lspconfig.
-	local capabilities = require('cmp_nvim_lsp').default_capabilities()
+	local lspconfig = require('lspconfig')
+	local lsp_defaults = lspconfig.util.default_config
+
+	lsp_defaults.capabilities = vim.tbl_deep_extend(
+	  'force',
+	  lsp_defaults.capabilities,
+	  require('cmp_nvim_lsp').default_capabilities()
+	)
+	--local capabilities = require('cmp_nvim_lsp').default_capabilities()
 	local servers = {
 		'clangd','rust_analyzer','pylsp','cmake',
 		'texlab','jsonls','lua_ls','vimls'
 	}
-	local lspconfig = require("lspconfig")
 	for _, lsp in ipairs(servers) do
-		lspconfig[lsp].setup {
-			capabilities = capabilities
-		}
+		lspconfig[lsp].setup({
+			capabilities = lsp_defaults.capabilities
+		})
 	end
 end
 
 local function myLuaSnip()
+	--[[
 	luasnip.config.set_config {
 		updateevents = "TextChanged,TextChangedI",
 		history = true
 	}
+	--]]
+	require('luasnip.loaders.from_vscode').lazy_load()
 end
 
 function myCmp.setup()
@@ -173,7 +234,7 @@ function myCmp.setup()
 	myFileTypes()
 	myCmdLine()
 	myLsp()
-	--myLuaSnip()
+	myLuaSnip()
 end
 
 return myCmp

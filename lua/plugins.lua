@@ -82,8 +82,6 @@ return require('packer').startup(function(use)
 		requires = {'nvim-lua/plenary.nvim','mfussenegger/nvim-dap'}
 	}
 
-
-
 	if packer_bootstrap then
 		require("packer").sync()
 	end
