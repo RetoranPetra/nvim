@@ -12,10 +12,12 @@ function preferences.setup()
 	vim.opt.relativenumber = true
 	vim.opt.number = true
 	-- Set tab size
-	vim.opt.tabstop=4
-	vim.opt.shiftwidth=4
+	vim.opt.tabstop=2
+	vim.opt.shiftwidth=2
 	-- Allow mouse
 	vim.opt.mouse = 'a'
+
+	vim.opt.fileencoding = "utf-8"
 
 	-- Alter search
 	--vim.opt.hlsearch = false
