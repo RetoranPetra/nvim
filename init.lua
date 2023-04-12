@@ -1,4 +1,2 @@
--- Vanilla preferences
-require('preferences').setup()
--- Plugin initialisation and setup (for the most part)
-require('plugins')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
