@@ -15,7 +15,7 @@ return {
 			vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE", fg = "#c3ccdc"})
 		end
 	},
-  -- Configure LazyVim to load gruvbox
+  -- Configure LazyVim to load my colorscheme.
   {
     "LazyVim/LazyVim",
     opts = {
@@ -145,7 +145,6 @@ return {
     opts = {
       ensure_installed = {
         "bash",
-        "help",
         "html",
         "javascript",
         "json",
@@ -158,6 +157,7 @@ return {
         "tsx",
         "typescript",
         "vim",
+        "vimdoc",
         "yaml",
       },
     },
