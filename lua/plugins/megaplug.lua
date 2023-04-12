@@ -96,6 +96,21 @@ return {
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        rust_analyzer = {},
+        clangd = {},
+        lua_ls = {},
+        bashls = {}
+      },
+    },
+  },
+  -- Fix encoding for clangd
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      setup = {
+        clangd = function(_, opts)
+          opts.capabilities.offsetEncoding = { "utf-16" }
+        end,
       },
     },
   },
@@ -146,19 +161,25 @@ return {
       ensure_installed = {
         "bash",
         "html",
-        "javascript",
         "json",
         "lua",
         "markdown",
         "markdown_inline",
         "python",
-        "query",
         "regex",
         "tsx",
-        "typescript",
         "vim",
         "vimdoc",
         "yaml",
+        "rust",
+        "c",
+        "cpp",
+        "c_sharp",
+        "diff",
+        "gitcommit",
+        "git_config",
+        "gitignore",
+        "gitattributes",
       },
     },
   },
@@ -218,9 +239,6 @@ return {
 
   -- Use <tab> for completion and snippets (supertab)
   -- first: disable default <tab> and <s-tab> behavior in LuaSnip
-  --
-  --
-  -- LOOK HERE THIS WAS ALMOST DEFINITELY THE PROBLEM IN MY ORIGINAL CONFIG.
   {
     "L3MON4D3/LuaSnip",
     keys = function()
@@ -267,6 +285,17 @@ return {
             fallback()
           end
         end, { "i", "s" }),
+        ["<CR>"] = cmp.mapping({
+          i = function(fallback)
+            if cmp.visible() and cmp.get_active_entry() then
+              cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
+            else
+              fallback()
+            end
+          end,
+          s = cmp.mapping.confirm({select = true}),
+          c = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
+        })
       })
     end,
   },
