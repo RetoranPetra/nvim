@@ -3,7 +3,7 @@
 -- Add any additional options hereby
 -- This file is automatically loaded by plugins.config
 
---This is already setup previously, but for formatting to like it setting it up again.
+--This is already setup previously, but setup again for competion to like it setting it up again.
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 

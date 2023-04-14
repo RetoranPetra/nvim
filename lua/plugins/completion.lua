@@ -12,6 +12,7 @@ return {
         lua_ls = {},
         bashls = {},
       },
+      autoformat = false,
       -- Fix encoding for clangd
       setup = {
         clangd = function(_, opts)
