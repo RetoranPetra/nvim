@@ -1,68 +1,4 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
--- every spec file under config.plugins will be loaded automatically by lazy.nvim
---
--- In your plugin files, you can:
--- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
 return {
-  -- Configure LazyVim to load my colorscheme.
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "nightfly",
-    },
-  },
-  {
-    "folke/trouble.nvim",
-    -- opts will be merged with the parent spec
-    opts = { use_diagnostic_signs = true },
-  },
-
-  -- add symbols-outline (Looks cool, i'm not smart enough to use it.)
-  {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
-    keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-    config = true,
-  },
-
-  -- change some telescope options and a keymap to browse plugin files
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      -- add a keymap to browse plugin files
-      -- stylua: ignore
-      {
-        "<leader>fp",
-        function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-        desc = "Find Plugin File",
-      },
-    },
-    -- change some options
-    opts = {
-      defaults = {
-        layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
-        sorting_strategy = "ascending",
-        winblend = 0,
-      },
-    },
-  },
-
-  -- add telescope-fzf-native
-  {
-    "telescope.nvim",
-    dependencies = {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
-  },
-
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
@@ -74,14 +10,9 @@ return {
         rust_analyzer = {},
         clangd = {},
         lua_ls = {},
-        bashls = {}
+        bashls = {},
       },
-    },
-  },
-  -- Fix encoding for clangd
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
+      -- Fix encoding for clangd
       setup = {
         clangd = function(_, opts)
           opts.capabilities.offsetEncoding = { "utf-16" }
@@ -89,7 +20,6 @@ return {
       },
     },
   },
-
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
   { import = "lazyvim.plugins.extras.lang.typescript" },
@@ -123,7 +53,6 @@ return {
       },
     },
   },
-
   -- use mini.starter instead of alpha
   { import = "lazyvim.plugins.extras.ui.mini-starter" },
 
@@ -151,6 +80,7 @@ return {
       return {}
     end,
   },
+
   -- then: setup supertab in cmp
   {
     "hrsh7th/nvim-cmp",
@@ -194,14 +124,14 @@ return {
         ["<CR>"] = cmp.mapping({
           i = function(fallback)
             if cmp.visible() and cmp.get_active_entry() then
-              cmp.confirm({behavior = cmp.ConfirmBehavior.Replace, select = false})
+              cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
             else
               fallback()
             end
           end,
-          s = cmp.mapping.confirm({select = true}),
-          c = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
-        })
+          s = cmp.mapping.confirm({ select = true }),
+          c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+        }),
       })
     end,
   },
