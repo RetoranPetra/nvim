@@ -138,31 +138,31 @@ return {
 					s = cmp.mapping.confirm({ select = true }),
 					c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 				}),
-        -- Disable completion on any arrow key press.
-        ["<Up>"] = cmp.mapping(function (fallback)
-          if cmp.visible() then
-            cmp.close()
-          end
-          fallback()
-        end,{"i"}),
-        ["<Down>"] = cmp.mapping(function (fallback)
-          if cmp.visible() then
-            cmp.close()
-          end
-          fallback()
-        end,{"i"}),
-        ["<Left>"] = cmp.mapping(function (fallback)
-          if cmp.visible() then
-            cmp.close()
-          end
-          fallback()
-        end,{"i"}),
-        ["<Right>"] = cmp.mapping(function (fallback)
-          if cmp.visible() then
-            cmp.close()
-          end
-          fallback()
-        end,{"i"}),
+				-- Disable completion on any arrow key press.
+				["<Up>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.close()
+					end
+					fallback()
+				end, { "i" }),
+				["<Down>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.close()
+					end
+					fallback()
+				end, { "i" }),
+				["<Left>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.close()
+					end
+					fallback()
+				end, { "i" }),
+				["<Right>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.close()
+					end
+					fallback()
+				end, { "i" }),
 			})
 		end,
 	},
