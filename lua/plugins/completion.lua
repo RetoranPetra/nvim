@@ -52,6 +52,10 @@ return {
 				"gitignore",
 				"gitattributes",
 			},
+      auto_install = true,
+      highlight = {
+        enable = true
+      }
 		},
 	},
 	-- use mini.starter instead of alpha
