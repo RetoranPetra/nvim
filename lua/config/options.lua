@@ -9,6 +9,7 @@ vim.g.maplocalleader = " "
 
 local opt = vim.opt
 
+--opt.paste = true -- Makes paste play better with terminal.
 -- Overwritten default options
 opt.autowrite = false -- Enable auto write
 opt.smartindent = false -- Insert indents automatically

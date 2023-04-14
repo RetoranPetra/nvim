@@ -5,6 +5,6 @@ return {
     config = function(_, opts)
       require("mini.pairs").setup(opts)
     end,
-    enabled = false,
+    --enabled = false,
   },
 }
