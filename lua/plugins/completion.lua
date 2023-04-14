@@ -102,9 +102,13 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_next_item()
-            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-            -- they way you will only jump inside the snippet region
+            if cmp.get_active_entry() then
+              cmp.select_next_item()
+            else
+              cmp.select_next_item({count = 0})
+            end
+          -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+          -- they way you will only jump inside the snippet region
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           elseif has_words_before() then
@@ -127,6 +131,7 @@ return {
             if cmp.visible() and cmp.get_active_entry() then
               cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
             else
+              cmp.close()
               fallback()
             end
           end,
