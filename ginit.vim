@@ -1,10 +1,10 @@
 " Enable Mouse
 set mouse=a
-let g:usingGUI=1
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
     Guifont! IosevkaTerm NFM:h12
+    let g:usingGUI=1
 endif
 
 " Disable GUI Tabline

@@ -2,7 +2,7 @@ return {
   "bluz71/vim-nightfly-colors",
   name = "nightfly",
   config = function()
-    if vim.g.useTransparency then
+    if vim.g.usingGUI == nil then
       vim.g.nightflyTransparent = true
     end
     vim.g.nightflyCursorColor = true

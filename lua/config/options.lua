@@ -8,11 +8,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local opt = vim.opt
-if vim.fn.has('win32') or vim.g.usingGUI then
-  vim.g.useTransparency = false
-else
-  vim.g.useTransparency = true
-end
 
 --opt.paste = true -- Makes paste play better with terminal.
 -- Overwritten default options
