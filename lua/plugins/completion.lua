@@ -52,10 +52,10 @@ return {
 				"gitignore",
 				"gitattributes",
 			},
-      auto_install = true,
-      highlight = {
-        enable = true
-      }
+			auto_install = true,
+			highlight = {
+				enable = true,
+			},
 		},
 	},
 	-- use mini.starter instead of alpha
@@ -103,6 +103,15 @@ return {
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
 
+			opts.sources = cmp.config.sources({
+				{ name = "luasnip" },
+			}, {
+				{ name = "nvim_lsp" },
+			}, {
+				{ name = "buffer" },
+			}, {
+				{ name = "path" },
+			})
 			opts.mapping = vim.tbl_extend("force", opts.mapping, {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
