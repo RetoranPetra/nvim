@@ -1,1 +1,5 @@
-return { "shatur/neovim-tasks", dependencies = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" } }
+return {
+	"shatur/neovim-tasks",
+	dependencies = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap" },
+	enabled = false,
+}

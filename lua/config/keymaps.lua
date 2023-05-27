@@ -10,6 +10,13 @@ vim.keymap.set("n", "<C-S-c>", '"*y')
 vim.keymap.set("n", "<C-S-v>", '"*p')
 
 --[[
+vim.keymap.set({ "n","v" }, "<Up>", "<nop>");
+vim.keymap.set({ "n","v" }, "<Down>", "<nop>");
+vim.keymap.set({ "n","v" }, "<Left>", "<nop>");
+vim.keymap.set({ "n","v" }, "<Right>", "<nop>");
+--]]
+
+--[[
 -- This file is automatically loaded by lazyvim.plugins.config
 
 local Util = require("lazyvim.util")

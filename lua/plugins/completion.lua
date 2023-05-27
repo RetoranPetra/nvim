@@ -91,7 +91,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			--"hrsh7th/cmp-emoji",
-      "FelipeLema/cmp-async-path",
+      --"FelipeLema/cmp-async-path",
 		},
 		---@param opts cmp.ConfigSchema
 		opts = function(_, opts)
@@ -111,7 +111,8 @@ return {
 			}, {
 				{ name = "buffer" },
 			}, {
-				{ name = "async_path" },
+				--{ name = "async_path" },
+          { name = "path" }
 			})
 			opts.mapping = vim.tbl_extend("force", opts.mapping, {
 				["<Tab>"] = cmp.mapping(function(fallback)
