@@ -8,12 +8,13 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local opt = vim.opt
+opt.wrap = true
+opt.linebreak = true;
 
 --opt.paste = true -- Makes paste play better with terminal.
 -- Overwritten default options
 opt.autowrite = false -- Enable auto write
 opt.smartindent = false -- Insert indents automatically
-opt.wrap = true -- Disable line wrap
 opt.cursorline = false -- Enable highlighting of the current line
 opt.completeopt = "menu,menuone,noselect,noinsert" -- Disable insert by default as well.
 -- I don't like this, would ideally want a toggle for "true" spaces
