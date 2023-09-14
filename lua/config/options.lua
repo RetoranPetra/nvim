@@ -17,7 +17,7 @@ opt.autowrite = false -- Enable auto write
 opt.smartindent = false -- Insert indents automatically
 opt.cursorline = false -- Enable highlighting of the current line
 opt.completeopt = "menu,menuone,noselect,noinsert" -- Disable insert by default as well.
--- I don't like this, would ideally want a toggle for "true" spaces
+-- TODO: I don't like this, would ideally want a toggle for "true" spaces
 opt.expandtab = true -- Use spaces instead of tabs
 
 -- Defaults, commented out the ones I'm happpy with, changed the ones I'm not happy with above.
