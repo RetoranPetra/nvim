@@ -1,6 +1,6 @@
 return {
 
-  --- Need to add omnisharp.
+	--- Need to add omnisharp.
 
 	{
 		"neovim/nvim-lspconfig",
@@ -14,7 +14,7 @@ return {
 				clangd = {},
 				lua_ls = {},
 				bashls = {},
-        omnisharp = {},
+				omnisharp = {},
 			},
 			autoformat = false,
 			-- Fix encoding for clangd
@@ -22,9 +22,9 @@ return {
 				clangd = function(_, opts)
 					opts.capabilities.offsetEncoding = { "utf-16" }
 				end,
-        omnisharp = function(_, opts)
-          ---opts.cmd = {"dotnet", "/usr/lib/omnisharp-roslyn/OmniSharp.dll"}
-        end,
+				omnisharp = function(_, opts)
+					---opts.cmd = {"dotnet", "/usr/lib/omnisharp-roslyn/OmniSharp.dll"}
+				end,
 			},
 		},
 	},
@@ -60,35 +60,49 @@ return {
 				"gitattributes",
 			},
 			auto_install = true,
-      -- For some reason this isn't working on this patch. Using manual enforcement instead.
+			-- For some reason this isn't working on this patch. Using manual enforcement instead.
 			highlight = {
-        enable = true,
+				enable = true,
 			},
-      indent = {
-        enable = true,
-      },
+			indent = {
+				enable = true,
+			},
 		},
-    config = function (_,opts)
-      -- Perform default setup before anything else. Lazyvim won't do this for is if we specify a config.
-      require("nvim-treesitter.configs").setup(opts)
-      -- Manually adds external parsers.
-      ---@class treesitterparser
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config.hypr = {
-        install_info = {
-          url = "https://github.com/luckasRanarison/tree-sitter-hypr",
-          files = {"src/parser.c"},
-          branch = "master",
-          --requires_generate_from_grammar = false,
-        },
-        filetype = "hypr",
-      }
-    end
+		config = function(_, opts)
+			-- Perform default setup before anything else. Lazyvim won't do this for is if we specify a config.
+			require("nvim-treesitter.configs").setup(opts)
+			-- Manually adds external parsers.
+			---@class treesitterparser
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			parser_config.hypr = {
+				install_info = {
+					url = "https://github.com/luckasRanarison/tree-sitter-hypr",
+					files = { "src/parser.c" },
+					branch = "master",
+					--requires_generate_from_grammar = false,
+				},
+				filetype = "hypr",
+			}
+		end,
 	},
-  -- Sway config syntax highlighting
-  {"jamespeapen/swayconfig.vim"},
-  -- Hyprland config syntax highlighting
-  {"luckasRanarison/tree-sitter-hypr"},
+	-- Polyglot for things not covered by treesitter.
+	{
+		"sheerun/vim-polyglot",
+		-- Quick and dirty solution to make polyglot not use parsers intalled by treesitter.
+		init = function()
+			local parsers = require("nvim-treesitter.info").installed_parsers()
+			for i = 1, #parsers do
+				parsers[i] = parsers[i] .. ".plugin"
+			end
+			table.insert(parsers, 1, "sensible")
+			vim.g.polyglot_disabled = parsers
+		end,
+	},
+
+	-- Sway config syntax highlighting
+	{ "jamespeapen/swayconfig.vim" },
+	-- Hyprland config syntax highlighting
+	{ "luckasRanarison/tree-sitter-hypr" },
 	-- use mini.starter instead of alpha
 	{ import = "lazyvim.plugins.extras.ui.mini-starter" },
 
@@ -122,7 +136,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			--"hrsh7th/cmp-emoji",
-      --"FelipeLema/cmp-async-path",
+			--"FelipeLema/cmp-async-path",
 		},
 		---@param opts cmp.ConfigSchema
 		opts = function(_, opts)
@@ -143,10 +157,10 @@ return {
 				{ name = "buffer" },
 			}, {
 				--{ name = "async_path" },
-          { name = "path" }
+				{ name = "path" },
 			})
 			opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        -- TODO: Change completion tab/enter bindings to make more sense under my scheme, or just the default basic version.
+				-- TODO: Change completion tab/enter bindings to make more sense under my scheme, or just the default basic version.
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						if cmp.get_active_entry() then
