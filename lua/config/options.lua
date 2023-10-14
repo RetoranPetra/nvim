@@ -76,7 +76,7 @@ vim.api.nvim_create_user_command("MasonUpgrade", function()
 	local packages = registry.get_all_packages()
 	for _, pkg in ipairs(packages) do
 		if pkg:is_installed() then
-			pkg:install()
+			pkg:install({force = true,})
 		end
 	end
 	vim.cmd("doautocmd User MasonUpgradeComplete")
