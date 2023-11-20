@@ -1,7 +1,5 @@
 return {
 
-	--- Need to add omnisharp.
-
 	{
 		"neovim/nvim-lspconfig",
 		---@class PluginLspOpts
@@ -24,11 +22,15 @@ return {
 					opts.capabilities.offsetEncoding = { "utf-16" }
 				end,
 				omnisharp = function(_, opts)
-					---opts.cmd = {"dotnet", "/usr/lib/omnisharp-roslyn/OmniSharp.dll"}
 				end,
 			},
 		},
 	},
+
+	-- Omnisharp definitions support
+	-- May need to enable decompilation support in omnisharp settings.
+	{"Hoffs/omnisharp-extended-lsp.nvim"},
+
 	-- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
 	-- treesitter, mason and typescript.nvim. So instead of the above, you can use:
 	{ import = "lazyvim.plugins.extras.lang.typescript" },
