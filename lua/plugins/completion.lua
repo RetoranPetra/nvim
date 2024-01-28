@@ -69,6 +69,7 @@ return {
 		dependencies = {
 			--"hrsh7th/cmp-emoji",
 			--"FelipeLema/cmp-async-path",
+			"f3fora/cmp-spell",
 		},
 		---@param opts cmp.ConfigSchema
 		opts = function(_, opts)
@@ -87,6 +88,7 @@ return {
 				{ name = "nvim_lsp" },
 			}, {
 				{ name = "buffer" },
+				{ name = "spell" },
 			}, {
 				--{ name = "async_path" },
 				{ name = "path" },
