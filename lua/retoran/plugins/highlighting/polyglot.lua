@@ -9,7 +9,6 @@ return {
 		table.insert(parsers, 1, "sensible")
 		vim.g.polyglot_disabled = parsers
 	end,
-	event = "bufEnter",
-	config = true
+	event = "bufEnter"
 }
 
