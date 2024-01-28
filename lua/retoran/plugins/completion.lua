@@ -24,7 +24,7 @@ return {
 
 			opts.snippet = {
 				expand = function(args)
-					luasnip.expand_snippet(args.body)
+					luasnip.lsp_expand(args.body)
 				end
 			}
 
