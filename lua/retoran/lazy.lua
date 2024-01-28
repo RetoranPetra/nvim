@@ -13,7 +13,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{import = "retoran.plugins"},
 	{import = "retoran.plugins.lsp"},
-	{import = "retoran.plugins.highlighting"}
+	{import = "retoran.plugins.highlighting"},
+	{import = "retoran.plugins.ui"}
 }, {
 
 }
