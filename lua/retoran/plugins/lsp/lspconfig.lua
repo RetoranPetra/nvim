@@ -4,6 +4,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = "williamboman/mason.nvim"
 	},
+	event = "BufEnter",
 	opts = {
 		lua_ls = {
 			settings = {
