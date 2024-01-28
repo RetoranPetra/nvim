@@ -5,5 +5,10 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	event = "VeryLazy",
-	opts = {}
+	opts = {
+		cmdline = {
+			enabled = true,
+			view ="cmdline"
+		}
+	}
 }
