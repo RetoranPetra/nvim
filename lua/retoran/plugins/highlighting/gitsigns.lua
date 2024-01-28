@@ -1,6 +1,6 @@
 return {
-	-- Not working for whatever reason.
+	-- Working now, do not touch
 	"lewis6991/gitsigns.nvim",
-	setup = true,
+	opts = {},
 	event = "bufEnter"
 }
