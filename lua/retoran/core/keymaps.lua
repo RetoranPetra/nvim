@@ -15,6 +15,7 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 -- Buffer Navigation
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+-- TODO: Add Ctrl+Shift+c and Ctrl+Shift+v missing bindings
 
 -- Enable keybindings
 
