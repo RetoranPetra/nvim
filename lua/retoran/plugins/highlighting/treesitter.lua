@@ -21,7 +21,10 @@ return {
 				"cmake",
 				"make",
 				"luadoc",
-				"hyprlang"
+				-- Install hyprlang with TSInstall after treesitter has initialised.
+				--"hyprlang"
+
+				-- TODO: Should automatically install hyprlang somehow.
 			},
 			indent = { enable = true },
 			-- Don't install all at once, better for windows.
