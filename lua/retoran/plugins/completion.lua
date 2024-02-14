@@ -79,7 +79,7 @@ return {
 			}
 		end,
 		-- Can't tell if this is working but it seems to be?
-		config = function (_,opts)
+		config = function(_, opts)
 			local cmp = require("cmp")
 			cmp.setup(opts)
 			cmp.setup.cmdline({

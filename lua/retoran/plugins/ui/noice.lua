@@ -16,7 +16,7 @@ return {
 		},
 		cmdline = {
 			enabled = true,
-			view ="cmdline"
+			view = "cmdline"
 		}
 	}
 }

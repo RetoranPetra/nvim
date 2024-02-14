@@ -9,7 +9,7 @@ return {
 		"folke/neodev.nvim"
 	},
 	event = "BufEnter",
-	opts = function (_,opts)
+	opts = function(_, opts)
 		opts.lua_ls = {
 			settings = {
 				Lua = {
@@ -46,14 +46,14 @@ return {
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
 			-- a dedicated handler.
-			function(server_name)    -- default handler (optional)
+			function(server_name) -- default handler (optional)
 				lspconf[server_name].setup {}
 			end,
 			["lua_ls"] = function()
 				require("neodev").setup({})
 				lspconf["lua_ls"].setup(opts.lua_ls)
 			end,
-			["omnisharp"] = function ()
+			["omnisharp"] = function()
 				lspconf["omnisharp"].setup(opts.omnisharp)
 			end
 		}

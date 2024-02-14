@@ -25,10 +25,10 @@ return {
 		-- Don't install all at once, better for windows.
 		sync_install = true
 	},
-	build = function ()
+	build = function()
 		require("nvim-treesitter.install").update({ with_sync = true })()
 	end,
-	config = function(_,opts)
+	config = function(_, opts)
 		local configs = require("nvim-treesitter.configs")
 		configs.setup(opts)
 	end,
