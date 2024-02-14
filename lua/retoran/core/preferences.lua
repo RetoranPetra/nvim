@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 -- Display
 opt.wrap = true
 opt.linebreak = true
+opt.breakindent = true
 opt.conceallevel = 3
 opt.showmatch = true
 -- Tabs and indenting
