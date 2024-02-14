@@ -44,6 +44,9 @@ return {
 				}, {
 					{ name = "path" }
 				})
+			opts.completion = {
+				completeopt = "menu,menuone,noinsert,noselect"
+			}
 			opts.mapping = {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
