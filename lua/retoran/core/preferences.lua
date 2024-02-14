@@ -1,25 +1,24 @@
-local opt = vim.opt
 vim.g.mapleader = " "
 
 -- Display
-opt.wrap = true
-opt.linebreak = true
-opt.breakindent = true
-opt.conceallevel = 3
-opt.showmatch = true
-opt.list = true
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.conceallevel = 3
+vim.opt.showmatch = true
+vim.opt.list = true
 -- Line number
-opt.number = true
-opt.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 -- Tabs and indenting
-opt.tabstop = 2
-opt.smartindent = true
-opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smartindent = true
+vim.opt.shiftwidth = 2
 
 -- Ignore case when searching
-opt.smartcase = true
+vim.opt.smartcase = true
 -- Input
-opt.mouse = "a"
-opt.ttyfast = true
+vim.opt.mouse = "a"
+vim.opt.ttyfast = true
 -- Sync with system clipboard
-opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
