@@ -1,7 +1,5 @@
 return {
-	{
-		"echasnovski/mini.pairs",
-		event = "VeryLazy",
-		--enabled = false,
-	},
+	"echasnovski/mini.pairs",
+	event = "InsertEnter",
+	config = true
 }
