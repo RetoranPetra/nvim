@@ -26,9 +26,15 @@ return {
 				},
 			},
 		}
+		local path
+		if vim.g.os == "Linux" then
+			path = vim.fn.stdpath("data") .. "/mason/bin/omnisharp"
+		elseif vim.g.os == "Windows" then
+			path = vim.fn.stdpath("data") .. "\\mason\\bin\\omnisharp.cmd"
+		end
 		opts.omnisharp = {
 			cmd = {
-				"C:\\Users\\cevans\\AppData\\Local\\nvim-data\\mason\\bin\\omnisharp.cmd",
+				path,
 				"--languageserver",
 				"--hostPID",
 				tostring(vim.fn.getpid()),
