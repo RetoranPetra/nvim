@@ -15,6 +15,14 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 -- Buffer Navigation
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+-- Diagnostic keymaps
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+-- Rename buffer easily
+map("n", '<leader>rn', vim.lsp.buf.rename, { desc = "Rename Buffer"})
+-- TODO: Add Ctrl+Shift+c and Ctrl+Shift+v missing bindings
 
 -- Enable keybindings
 
