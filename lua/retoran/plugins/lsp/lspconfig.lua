@@ -38,19 +38,20 @@ return {
 	config = function(_, opts)
 		-- Use masonlspconfig to automatically setup our servers.
 		-- See :h mason-lspconfig-automatic-server-setup
+		local lspconf = require("lspconfig")
 		require("mason-lspconfig").setup_handlers {
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
 			-- a dedicated handler.
 			function(server_name)    -- default handler (optional)
-				require("lspconfig")[server_name].setup {}
+				lspconf[server_name].setup {}
 			end,
 			["lua_ls"] = function()
 				require("neodev").setup({})
-				require("lspconfig")["lua_ls"].setup(opts.lua_ls)
+				lspconf["lua_ls"].setup(opts.lua_ls)
 			end,
 			["omnisharp"] = function ()
-				require("lspconfig")["omnisharp"].setup(opts.omnisharp)
+				lspconf["omnisharp"].setup(opts.omnisharp)
 			end
 		}
 	end
