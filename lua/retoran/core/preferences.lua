@@ -21,3 +21,5 @@ opt.smartcase = true
 -- Input
 opt.mouse = "a"
 opt.ttyfast = true
+-- Sync with system clipboard
+opt.clipboard = "unnamedplus"
