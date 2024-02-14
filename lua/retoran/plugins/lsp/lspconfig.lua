@@ -8,8 +8,8 @@ return {
 		},
 	},
 	event = "BufEnter",
-	opts = {
-		lua_ls = {
+	opts = function (_,opts)
+		opts.lua_ls = {
 			settings = {
 				Lua = {
 					runtime = { version = "LuaJIT" },
@@ -25,8 +25,19 @@ return {
 					telemetry = { enable = false },
 				},
 			},
-		},
-	},
+		}
+		opts.omnisharp = {
+			cmd = {
+				"C:\\Users\\cevans\\AppData\\Local\\nvim-data\\mason\\bin\\omnisharp.cmd",
+				"--languageserver",
+				"--hostPID",
+				tostring(vim.fn.getpid()),
+			},
+			handlers = {
+				["textDocument/definition"] = require("omnisharp_extended").handler,
+			},
+		}
+	end,
 	config = function(_, opts)
 		-- Enable keybindings
 
@@ -74,17 +85,7 @@ return {
 				require("lspconfig")["lua_ls"].setup(opts.lua_ls)
 			end,
 			["omnisharp"] = function ()
-				require("lspconfig")["omnisharp"].setup({
-					cmd = {
-						"C:\\Users\\cevans\\AppData\\Local\\nvim-data\\mason\\bin\\omnisharp.cmd",
-						"--languageserver",
-						"--hostPID",
-						tostring(vim.fn.getpid()),
-					},
-					handlers = {
-						["textDocument/definition"] = require("omnisharp_extended").handler,
-					},
-				})
+				require("lspconfig")["omnisharp"].setup(opts.omnisharp)
 			end
 		}
 	end
