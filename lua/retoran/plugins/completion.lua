@@ -86,6 +86,7 @@ return {
 		config = function(_, opts)
 			local cmp = require("cmp")
 			cmp.setup(opts)
+			-- Setup for specific types and such inherit from initial setup.
 			cmp.setup.cmdline(":",{
 				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
