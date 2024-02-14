@@ -29,7 +29,7 @@ return {
 		local path
 		if vim.g.os == "Linux" then
 			path = vim.fn.stdpath("data") .. "/mason/bin/omnisharp"
-		elseif vim.g.os == "Windows" then
+		elseif vim.g.os == "Windows_NT" then
 			path = vim.fn.stdpath("data") .. "\\mason\\bin\\omnisharp.cmd"
 		end
 		opts.omnisharp = {
