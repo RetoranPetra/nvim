@@ -9,6 +9,7 @@ return {
 				"omnisharp",
 				"clangd",
 				"rust_analyzer",
+				"marksman",
 			},
 		}
 	},
