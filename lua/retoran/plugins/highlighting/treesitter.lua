@@ -2,6 +2,9 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
+			highlight = { enable = true },
+			indent = { enable = true },
+			cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 			auto_install = true,
 			ensure_installed = {
 				"c",
@@ -26,7 +29,6 @@ return {
 
 				-- TODO: Should automatically install hyprlang somehow.
 			},
-			indent = { enable = true },
 			-- Don't install all at once, better for windows.
 			sync_install = true
 		},
