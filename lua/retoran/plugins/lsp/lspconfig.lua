@@ -30,6 +30,9 @@ return {
 				"--hostPID",
 				tostring(vim.fn.getpid()),
 			},
+			-- May want to enable these at some point
+			enable_import_completion = false,
+			enable_rosyln_analyzers = false,
 			handlers = {
 				["textDocument/definition"] = require("omnisharp_extended").handler,
 			},
