@@ -93,6 +93,17 @@ return {
 					{ name = "cmdline" }
 				}
 			})
+			-- Add one for bash completion for "!" type
+			-- One for lua completion for "lua" type
+
+			-- Filetype setup
+			cmp.setup.filetype({"markdown","txt"},{
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "spell" },
+					{ name = "path" }
+				}
+			})
 		end
 	}
 }
