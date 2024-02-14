@@ -7,5 +7,6 @@ return {
     end
     vim.g.nightflyCursorColor = true
     vim.g.nightflyItalics = true
+    vim.cmd([[colorscheme nightfly]])
   end,
 }
