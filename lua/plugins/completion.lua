@@ -15,6 +15,7 @@ return {
 				lua_ls = {},
 				bashls = {},
 				omnisharp = {},
+				glsl_analyzer = {},
 			},
 			autoformat = false,
 			-- Fix encoding for clangd
