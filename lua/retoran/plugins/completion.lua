@@ -36,12 +36,10 @@ return {
 			}
 			opts.sources = cmp.config.sources(
 				{
-					{ name = "luasnip" }
+					{ name = "luasnip", priority = 2},
+					{ name = "nvim_lsp", priority = 1}
 				}, {
-					{ name = "nvim_lsp" }
-				}, {
-					{ name = "buffer" }
-				}, {
+					{ name = "buffer" },
 					{ name = "path" }
 				})
 			opts.completion = {
