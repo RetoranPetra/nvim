@@ -36,8 +36,8 @@ return {
 			}
 			opts.sources = cmp.config.sources(
 				{
-					{ name = "luasnip", priority = 2},
-					{ name = "nvim_lsp", priority = 1}
+					{ name = "luasnip",  priority = 2 },
+					{ name = "nvim_lsp", priority = 1 }
 				}, {
 					{ name = "buffer" },
 					{ name = "path" }
@@ -89,7 +89,7 @@ return {
 					--c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 					c = function(fallback)
 						if cmp.visible() and cmp.get_active_entry() then
-							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false})
+							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
 						else
 							fallback()
 						end
@@ -102,7 +102,7 @@ return {
 			local cmp = require("cmp")
 			cmp.setup(opts)
 			-- Setup for specific types and such inherit from initial setup.
-			cmp.setup.cmdline(":",{
+			cmp.setup.cmdline(":", {
 				mapping = opts.mapping,
 				sources = {
 					{ name = "cmdline" }
@@ -112,7 +112,7 @@ return {
 			-- One for lua completion for "lua" type
 
 			-- Filetype setup
-			cmp.setup.filetype({"markdown","txt"},{
+			cmp.setup.filetype({ "markdown", "txt" }, {
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "spell" },

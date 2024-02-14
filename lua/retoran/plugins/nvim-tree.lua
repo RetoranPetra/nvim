@@ -12,7 +12,7 @@ return {
 	-- Takes opts from above.
 	config = function(_, opts)
 		require("nvim-tree").setup(opts)
-		require("nvim-tree.api").tree.toggle({focus = false, find_file = true})
+		require("nvim-tree.api").tree.toggle({ focus = false, find_file = true })
 	end,
 	event = "VimEnter"
 }
