@@ -69,6 +69,16 @@ return {
 			end,
 			["lua_ls"] = function()
 				require("lspconfig")["lua_ls"].setup(opts.lua_ls)
+			end,
+			["omnisharp"] = function ()
+				require("lspconfig")["omnisharp"].setup({
+					cmd = {
+						"C:\\Users\\cevans\\AppData\\Local\\nvim-data\\mason\\bin\\omnisharp.cmd",
+						"--languageserver",
+						"--hostPID",
+						tostring(vim.fn.getpid()),
+					}
+				})
 			end
 		}
 	end
