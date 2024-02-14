@@ -1,2 +1,3 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+require("retoran.core.defaults")
+require("retoran.core.preferences")
+require("retoran.lazy")
