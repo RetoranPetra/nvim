@@ -1,2 +1,1 @@
-return {
-}
+return {"iamcco/markdown-preview.nvim"}

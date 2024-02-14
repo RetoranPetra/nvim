@@ -58,6 +58,8 @@ return {
 			},
 		},
 	},
+  -- Sway config syntax highlighting
+  {"jamespeapen/swayconfig.vim"},
 	-- use mini.starter instead of alpha
 	{ import = "lazyvim.plugins.extras.ui.mini-starter" },
 
