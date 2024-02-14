@@ -12,4 +12,3 @@ return {
 	event = "bufEnter",
 	enabled = false
 }
-

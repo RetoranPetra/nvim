@@ -3,6 +3,6 @@ return {
 	event = "bufEnter",
 	opts = {
 		symbol = '|',
-		options = {try_as_border = false},
+		options = { try_as_border = false },
 	},
 }
