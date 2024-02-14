@@ -7,6 +7,7 @@ opt.linebreak = true
 opt.breakindent = true
 opt.conceallevel = 3
 opt.showmatch = true
+opt.list = true
 -- Line number
 opt.number = true
 opt.relativenumber = true
