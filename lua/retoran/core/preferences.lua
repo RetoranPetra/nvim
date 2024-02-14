@@ -9,7 +9,6 @@ vim.opt.showmatch = true
 vim.opt.list = true
 vim.opt.scrolloff = 4
 
-vim.opt.virtualedit = "all"
 -- Line number
 vim.opt.number = true
 vim.opt.relativenumber = true
