@@ -10,6 +10,7 @@ return {
 		require("nvim-treesitter.install").update({ with_sync = true })()
 	end,
 	config = function(_,opts)
+		require "nvim-treesitter.install".compilers = { "clang" }
 		local configs = require("nvim-treesitter.configs")
 		configs.setup(opts)
 	end,
