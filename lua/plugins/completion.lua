@@ -23,7 +23,7 @@ return {
 					opts.capabilities.offsetEncoding = { "utf-16" }
 				end,
         omnisharp = function(_, opts)
-          --- Add changes here for omnisharp.
+          ---opts.cmd = {"dotnet", "/usr/lib/omnisharp-roslyn/OmniSharp.dll"}
         end,
 			},
 		},
@@ -82,7 +82,6 @@ return {
 				"shellcheck",
 				"shfmt",
 				"flake8",
-        "omnisharp-mono" --- Needed for mono projects, seems to use it automatically.
 			},
 		},
 	},
