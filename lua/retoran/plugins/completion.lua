@@ -11,7 +11,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" }
 		},
-		event = "BufEnter",
+		lazy = false,
 		opts = function(_, opts)
 			local has_words_before = function()
 				unpack = unpack or table.unpack
