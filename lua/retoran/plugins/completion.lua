@@ -1,18 +1,18 @@
 return {
-	{ "L3MON4D3/LuaSnip", config = true},
+	{ "L3MON4D3/LuaSnip", config = true },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"f3fora/cmp-spell",
 			"L3MON4D3/LuaSnip",
-			{"hrsh7th/cmp-nvim-lsp", dependencies = "neovim/nvim-lspconfig"},
+			{ "hrsh7th/cmp-nvim-lsp",     dependencies = "neovim/nvim-lspconfig" },
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			{"saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip"}
+			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" }
 		},
 		event = "BufEnter",
-		opts = function(_,opts)
+		opts = function(_, opts)
 			local has_words_before = function()
 				unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -32,9 +32,9 @@ return {
 				{
 					{ name = "luasnip" }
 				}, {
-					{ name = "nvim_lsp"}
+					{ name = "nvim_lsp" }
 				}, {
-					{ name = "buffer"}
+					{ name = "buffer" }
 				}, {
 					{ name = "path" }
 				}, {
@@ -44,8 +44,8 @@ return {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
-					-- that way you will only jump inside the snippet region
+						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+						-- that way you will only jump inside the snippet region
 					elseif luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()
 					elseif has_words_before() then
@@ -64,6 +64,17 @@ return {
 						fallback()
 					end
 				end, { "i", "s" }),
+				["<CR>"] = cmp.mapping({
+					i = function(fallback)
+						if cmp.visible() and cmp.get_active_entry() then
+							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+						else
+							fallback()
+						end
+					end,
+					s = cmp.mapping.confirm({ select = true }),
+					c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+				}),
 			}
 		end
 	}
