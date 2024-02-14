@@ -6,3 +6,5 @@ opt.termguicolors = true
 opt.swapfile = false
 -- Polyglot wants this
 opt.compatible = false
+-- Set OS global variable for reference.
+vim.g.os = vim.loop.os_uname().sysname
