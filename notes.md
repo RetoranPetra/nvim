@@ -1,3 +1,10 @@
+# Dependencies
+- rustup, npm for mason to install packages
+- lazygit
+- ripgrep
+- fd
+- Nerd font
+
 # Version 10.0 upgrade notes
 ## What's new?
 
