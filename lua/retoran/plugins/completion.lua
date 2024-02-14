@@ -78,7 +78,14 @@ return {
 						end
 					end,
 					s = cmp.mapping.confirm({ select = true }),
-					c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+					--c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+					c = function(fallback)
+						if cmp.visible() and cmp.get_active_entry() then
+							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false})
+						else
+							fallback()
+						end
+					end,
 				}),
 			}
 		end,
@@ -88,7 +95,7 @@ return {
 			cmp.setup(opts)
 			-- Setup for specific types and such inherit from initial setup.
 			cmp.setup.cmdline(":",{
-				mapping = cmp.mapping.preset.cmdline(),
+				mapping = opts.mapping,
 				sources = {
 					{ name = "cmdline" }
 				}
