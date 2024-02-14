@@ -62,5 +62,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 -- List of bindings set in other places by plugins
 --[[
---<space>gg Open LazyGit
+
+	LazyGit
+	<space>gg Open LazyGit
+	
+	Telescope
+	<leader>ff Find Files
+	<leader>fg Find with grep
+	<leader>fb find buffer
+	<leader>fh find help tags
 --]]
