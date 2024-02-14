@@ -7,6 +7,9 @@ vim.opt.breakindent = true
 vim.opt.conceallevel = 3
 vim.opt.showmatch = true
 vim.opt.list = true
+vim.opt.scrolloff = 4
+
+vim.opt.virtualedit = "all"
 -- Line number
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -14,6 +17,12 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 2
 vim.opt.smartindent = true
 vim.opt.shiftwidth = 2
+vim.opt.shiftround = true
+-- Spelling
+vim.opt.spelllang = { "en_gb" }
+
+-- What happens when splitting
+vim.opt.splitright = true
 
 -- Ignore case when searching
 vim.opt.smartcase = true
