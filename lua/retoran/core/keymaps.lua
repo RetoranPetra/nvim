@@ -15,3 +15,52 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 -- Buffer Navigation
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+
+-- Enable keybindings
+
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+		-- Buffer local mappings.
+		-- See `:help vim.lsp.*` for documentation on any of the below functions
+		local temp = { buffer = ev.buf }
+		-- Go to declaration gD
+		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, temp)
+		-- Go to definition gd
+		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, temp)
+		-- Show documentation in hover K
+		vim.keymap.set('n', 'K', vim.lsp.buf.hover, temp)
+		-- Go to implementation gi
+		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, temp)
+		-- signature help control+k
+		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, temp)
+		-- Add workspace folder <space>wa
+		vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, temp)
+		-- Remove workspace folder <space>wr
+		vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, temp)
+		-- List workspace folders <space>wl
+		vim.keymap.set('n', '<space>wl', function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, temp)
+		-- Type definition <space>D
+		vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, temp)
+		-- RENAME, IMPORTANT. <space>rn
+		vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, temp)
+		vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, temp)
+		-- Go through references. gr
+		vim.keymap.set('n', 'gr', vim.lsp.buf.references, temp)
+		-- Format buffer <space>f
+		vim.keymap.set('n', '<space>f', function()
+			vim.lsp.buf.format { async = true }
+		end, temp)
+	end,
+})
+-- List of bindings set in other places by plugins
+--[[
+--<space>gg Open LazyGit
+--]]
