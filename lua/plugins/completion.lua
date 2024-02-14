@@ -117,6 +117,7 @@ return {
           { name = "path" }
 			})
 			opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        -- TODO: Change completion tab/enter bindings to make more sense under my scheme, or just the default basic version.
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						if cmp.get_active_entry() then
