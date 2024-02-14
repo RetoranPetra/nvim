@@ -5,6 +5,6 @@ return {
 		background_colour = "#000000",
 		render = "wrapped-compact",
 		stages = "fade",
-		timeout = 5000
+		timeout = 2000
 	}
 }
