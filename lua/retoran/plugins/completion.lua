@@ -9,7 +9,8 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" }
+			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" },
+			"onsails/lspkind.nvim",
 		},
 		lazy = false,
 		opts = function(_, opts)
@@ -21,13 +22,18 @@ return {
 
 			local luasnip = require("luasnip")
 			local cmp = require("cmp")
+			local lspkind = require("lspkind")
 
 			opts.snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
 				end
 			}
-
+			opts.formatting = {
+				format = lspkind.cmp_format({
+					mode = "symbol"
+				})
+			}
 			opts.sources = cmp.config.sources(
 				{
 					{ name = "luasnip" }
