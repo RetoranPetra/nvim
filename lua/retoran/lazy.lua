@@ -14,7 +14,8 @@ require("lazy").setup({
 	{import = "retoran.plugins"},
 	{import = "retoran.plugins.lsp"},
 	{import = "retoran.plugins.highlighting"},
-	{import = "retoran.plugins.ui"}
+	{import = "retoran.plugins.ui"},
+	{import = "retoran.plugins.git"}
 }, {
 
 }
