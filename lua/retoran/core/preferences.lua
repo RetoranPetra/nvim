@@ -7,6 +7,9 @@ opt.linebreak = true
 opt.breakindent = true
 opt.conceallevel = 3
 opt.showmatch = true
+-- Line number
+opt.number = true
+opt.relativenumber = true
 -- Tabs and indenting
 opt.tabstop = 2
 opt.smartindent = true
