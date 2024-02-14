@@ -1,8 +1,7 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	opts = {
-		auto_install = false,
-		highlight = { enable = true},
+		auto_install = true,
 		indent = { enable = true },
 		-- Don't install all at once, better for windows.
 		sync_install = true
