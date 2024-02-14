@@ -37,8 +37,6 @@ return {
 					{ name = "buffer" }
 				}, {
 					{ name = "path" }
-				}, {
-					{ name = "spell" }
 				})
 			opts.mapping = {
 				["<Tab>"] = cmp.mapping(function(fallback)
