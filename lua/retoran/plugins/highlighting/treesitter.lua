@@ -2,7 +2,6 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	opts = {
 		auto_install = true,
-		highlight = { enable = true},
 		indent = { enable = true },
 		-- Don't install all at once, better for windows.
 		sync_install = true
@@ -14,5 +13,5 @@ return {
 		local configs = require("nvim-treesitter.configs")
 		configs.setup(opts)
 	end,
-	event = "bufEnter"
+	lazy = false
 }
