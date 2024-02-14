@@ -12,9 +12,7 @@ return {
 	-- Takes opts from above.
 	config = function(_, opts)
 		require("nvim-tree").setup(opts)
-		-- Opens neotree on startup no matter what.
-		require("nvim-tree.api").tree.open()
-		-- Ideally want to keep focus on our buffer when we open neo tree, so probably want to change this.
+		require("nvim-tree.api").tree.toggle({focus = false, find_file = true})
 	end,
 	event = "VimEnter"
 }
