@@ -3,7 +3,13 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = "williamboman/mason.nvim",
 		opts = {
-			automatic_installation = false
+			automatic_installation = false,
+			ensure_installed = {
+				"lua_ls",
+				"omnisharp",
+				"clangd",
+				"rust_analyzer",
+			},
 		}
 	},
 	{
@@ -14,10 +20,6 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
-				"lua-language-server",
-				"omnisharp",
-				"clangd",
-				"rust-analyzer",
 				"tree-sitter-cli"
 			},
 			auto_update = true,
