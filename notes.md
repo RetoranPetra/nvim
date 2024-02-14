@@ -4,6 +4,7 @@
 - ripgrep
 - fd
 - Nerd font
+- glsl_analyzer binary on path (Can't be auto-installed by mason)
 
 # Version 10.0 upgrade notes
 ## What's new?
