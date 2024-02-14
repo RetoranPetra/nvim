@@ -1,8 +1,11 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = "williamboman/mason.nvim"
+		"Hoffs/omnisharp-extended-lsp.nvim",
+		{
+			"williamboman/mason-lspconfig.nvim",
+			dependencies = "williamboman/mason.nvim"
+		},
 	},
 	event = "BufEnter",
 	opts = {
@@ -77,7 +80,10 @@ return {
 						"--languageserver",
 						"--hostPID",
 						tostring(vim.fn.getpid()),
-					}
+					},
+					handlers = {
+						["textDocument/definition"] = require("omnisharp_extended").handler,
+					},
 				})
 			end
 		}
