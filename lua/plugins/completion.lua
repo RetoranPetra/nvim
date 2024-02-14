@@ -60,13 +60,35 @@ return {
 				"gitattributes",
 			},
 			auto_install = true,
+      -- For some reason this isn't working on this patch. Using manual enforcement instead.
 			highlight = {
-				enable = true,
+        enable = true,
 			},
+      indent = {
+        enable = true,
+      },
 		},
+    config = function (_,opts)
+      -- Perform default setup before anything else. Lazyvim won't do this for is if we specify a config.
+      require("nvim-treesitter.configs").setup(opts)
+      -- Manually adds external parsers.
+      ---@class treesitterparser
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config.hypr = {
+        install_info = {
+          url = "https://github.com/luckasRanarison/tree-sitter-hypr",
+          files = {"src/parser.c"},
+          branch = "master",
+          --requires_generate_from_grammar = false,
+        },
+        filetype = "hypr",
+      }
+    end
 	},
   -- Sway config syntax highlighting
   {"jamespeapen/swayconfig.vim"},
+  -- Hyprland config syntax highlighting
+  {"luckasRanarison/tree-sitter-hypr"},
 	-- use mini.starter instead of alpha
 	{ import = "lazyvim.plugins.extras.ui.mini-starter" },
 
