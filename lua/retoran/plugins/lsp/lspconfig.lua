@@ -6,7 +6,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			dependencies = "williamboman/mason.nvim"
 		},
-		"folke/neodev.nvim"
+		{ "folke/neodev.nvim", opts = {} }
 	},
 	event = "BufEnter",
 	opts = function(_, opts)
