@@ -2,9 +2,10 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
-			highlight = { enable = true },
+			-- Doesn't work on windows
+			--highlight = { enable = true },
+			--cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 			indent = { enable = true },
-			cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
 			auto_install = true,
 			ensure_installed = {
 				"c",
