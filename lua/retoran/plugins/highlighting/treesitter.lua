@@ -2,34 +2,36 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function (_,opts)
-			if vim.g.os == "Linux" then
+			if vim.g.os == "Linux" or vim.g.mingw64 == true then
 				opts.indent = { enable = true }
 				opts.highlight = { enable = true }
-			end
-			opts.auto_install = true
-			opts.ensure_installed = {
-				"c",
-				"lua",
-				"vim",
-				"vimdoc",
-				"query",
-				"regex",
-				"bash",
-				"markdown",
-				"markdown_inline",
-				"gitcommit",
-				"git_config",
-				"git_rebase",
-				"gitattributes",
-				"gitignore",
-				"cmake",
-				"make",
-				"luadoc",
-				-- Install hyprlang with TSInstall after treesitter has initialised.
-				--"hyprlang"
+				if vim.g.tsAutoInstall then
+					opts.auto_install = true
+					opts.ensure_installed = {
+						"c",
+						"lua",
+						"vim",
+						"vimdoc",
+						"query",
+						"regex",
+						"bash",
+						"markdown",
+						"markdown_inline",
+						"gitcommit",
+						"git_config",
+						"git_rebase",
+						"gitattributes",
+						"gitignore",
+						"cmake",
+						"make",
+						"luadoc",
+						-- Install hyprlang with TSInstall after treesitter has initialised.
+						--"hyprlang"
 
-				-- TODO: Should automatically install hyprlang somehow.
-				}
+						-- TODO: Should automatically install hyprlang somehow.
+						}
+				end
+			end
 			opts.sync_install = true
 		end,
 		build = function()
@@ -37,7 +39,7 @@ return {
 		end,
 		config = function(_, opts)
 			if vim.g.os == "Windows_NT" then
-				require"nvim-treesitter.install".compilers = { "clang" }
+				require"nvim-treesitter.install".compilers = { "cc","gcc","clang" }
 			end
 			local configs = require("nvim-treesitter.configs")
 			configs.setup(opts)
