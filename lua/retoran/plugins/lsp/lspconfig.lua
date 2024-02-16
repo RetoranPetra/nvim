@@ -19,6 +19,7 @@ return {
 		}
 		local path
 		if vim.g.os == "Linux" then
+			-- TODO: This command doesn't seem to be working on ubuntu WSL2. Fix
 			path = vim.fn.stdpath("data") .. "/mason/bin/omnisharp"
 		elseif vim.g.os == "Windows_NT" then
 			path = vim.fn.stdpath("data") .. "\\mason\\bin\\omnisharp.cmd"
