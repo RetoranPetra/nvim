@@ -2,8 +2,10 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function (_,opts)
-			--opts.indent = { enable = true }
-			--opts.highlight = { enable = true }
+			if vim.g.os == "Linux" then
+				opts.indent = { enable = true }
+				opts.highlight = { enable = true }
+			end
 			opts.auto_install = true
 			opts.ensure_installed = {
 				"c",
