@@ -1,13 +1,11 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			-- Doesn't work on windows
-			--highlight = { enable = true },
-			--cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-			indent = { enable = true },
-			auto_install = true,
-			ensure_installed = {
+		opts = function (_,opts)
+			--opts.indent = { enable = true }
+			--opts.highlight = { enable = true }
+			opts.auto_install = true
+			opts.ensure_installed = {
 				"c",
 				"lua",
 				"vim",
@@ -29,10 +27,9 @@ return {
 				--"hyprlang"
 
 				-- TODO: Should automatically install hyprlang somehow.
-			},
-			-- Don't install all at once, better for windows.
-			sync_install = true
-		},
+				}
+			opts.sync_install = true
+		end,
 		build = function()
 			require("nvim-treesitter.install").update({ with_sync = true })()
 		end,
