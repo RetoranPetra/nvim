@@ -34,6 +34,7 @@ return {
 			enable_import_completion = false,
 			-- Enable this for omnisharp_extended.
 			enable_rosyln_analyzers = false,
+			-- TODO: Double check if this is working correctly, getting a lot of errors on windows.
 			handlers = {
 				["textDocument/definition"] = require("omnisharp_extended").handler,
 			},

@@ -1,5 +1,7 @@
 -- change some telescope options and a keymap to browse plugin files
 return {
+	-- TODO: Add todo telescope.
+	-- TODO: Add git grep telescope.
 	"nvim-telescope/telescope.nvim",
 	opts = {},
 	dependencies = {
