@@ -1,4 +1,6 @@
 return {
+	-- Maybe change from nvim-tree to neotree.
+	-- https://github.com/nvim-neo-tree/neo-tree.nvim
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons"
