@@ -10,11 +10,19 @@ return {
 		vim.g.loaded_netrwPlugin = 1
 	end,
 	opts = {
-		-- TODO: Figure out what's going on when you use :e to open a file.
-		-- neo-tree doesn't seem to follow the selection
-		-- TODO: Figure out how to make an opened buffer get selected in neotree.
+		-- TODO: Make git source refresh on lazygit closing/fugitive command
+		-- Or better yet, make it refresh hooking more directly to fugitive/lazygit.
 		hide_root_node = true,
 		open_files_do_not_replace_types = {},
+		filesystem = {
+			follow_current_file = {
+				enabled = true,
+				leave_dirs_open = false,
+			},
+			hijack_netrw_behaviour = "open_default",
+			-- Try to use OS level file watchers instead of autcmds.
+			use_libuv_file_watcher = true
+		}
 	},
 	enabled = vim.g.neotree,
 }
