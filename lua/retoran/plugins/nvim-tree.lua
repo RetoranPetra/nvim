@@ -27,5 +27,6 @@ return {
 
 		require("nvim-tree").setup(opts)
 	end,
-	event = "VimEnter"
+	event = "VimEnter",
+	enabled = not vim.g.neotree
 }
