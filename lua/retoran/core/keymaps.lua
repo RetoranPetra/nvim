@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		-- Go through references. gr
 		vim.keymap.set('n', 'gr', vim.lsp.buf.references, temp)
 		-- Format buffer <space>f
-		vim.keymap.set('n', '<space>f', function()
+		vim.keymap.set('n', '<space>cf', function()
 			vim.lsp.buf.format { async = true }
 		end, temp)
 	end,
