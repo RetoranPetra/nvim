@@ -10,8 +10,6 @@ return {
 		vim.g.loaded_netrwPlugin = 1
 	end,
 	opts = {
-		-- TODO: Make git source refresh on lazygit closing/fugitive command
-		-- Or better yet, make it refresh hooking more directly to fugitive/lazygit.
 		hide_root_node = true,
 		open_files_do_not_replace_types = {},
 		filesystem = {
@@ -22,7 +20,13 @@ return {
 			hijack_netrw_behaviour = "open_default",
 			-- Try to use OS level file watchers instead of autcmds.
 			use_libuv_file_watcher = true
-		}
+		},
+		buffers = {
+			follow_current_file = {
+				enabled = true,
+				leave_dirs_open = false,
+			},
+		},
 	},
 	enabled = vim.g.neotree,
 }
