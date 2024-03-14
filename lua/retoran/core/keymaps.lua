@@ -26,6 +26,11 @@ map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Buffer" })
 
 -- Enable keybindings
 
+-- NOTE: Could possibly move all keybindings down here, even ones that rely on plugins
+--       Could do this via an autocommand that attaches to when a plugin is loaded?
+--       May be better to just place keybinds all over the place and document them
+--       using which-key.
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {

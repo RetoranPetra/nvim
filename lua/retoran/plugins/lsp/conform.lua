@@ -13,6 +13,8 @@ return {
 			cpp = { "clang-format" },
 			cmake = { "cmake_format" },
 			rust = { "rustfmt" },
+			-- NOTE: Beautysh appears to ALWAYS add a new line to the end of file on windows.
+			--       Likely is just due to unix emulation problems.
 			bash = { "beautysh" },
 			zsh = { "beautysh" },
 			sh = { "beautysh" },
