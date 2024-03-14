@@ -1,7 +1,12 @@
 return {
-	-- Would be nice to have this handled by an auto installer per langauge.
-	-- I.E. a set of default tools I want per language and then install them only
-	-- when opening said file type.
+
+	-- NOTE: Would be nice to have all the "Ensure installed"
+	--			handled by a centralised file organised by filetype.
+	--			Could instead possibly have a centralised file for
+	--			all language specific configuration, that then passes
+	--			through the arguments to the relevant handler such as
+	--			mason, mason-tool-installer, lspconfig, conform, nvim-dap etc.
+
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = "williamboman/mason.nvim",
