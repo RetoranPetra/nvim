@@ -12,5 +12,9 @@ return {
 			cpp = { "clang-format" },
 			cmake = { "cmake_format" },
 		},
+		format_on_save = {
+			timeout_ms = 2000,
+			lsp_fallback = true,
+		},
 	},
 }
