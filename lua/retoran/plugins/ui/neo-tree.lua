@@ -3,9 +3,9 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
-		"MunifTanjim/nui.nvim"
+		"MunifTanjim/nui.nvim",
 	},
-	init = function ()
+	init = function()
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 	end,
@@ -19,7 +19,7 @@ return {
 			},
 			hijack_netrw_behaviour = "open_default",
 			-- Try to use OS level file watchers instead of autcmds.
-			use_libuv_file_watcher = true
+			use_libuv_file_watcher = true,
 		},
 		buffers = {
 			follow_current_file = {

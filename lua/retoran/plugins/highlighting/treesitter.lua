@@ -37,15 +37,15 @@ return {
 		end,
 		config = function(_, opts)
 			if vim.g.os == "Windows_NT" then
-				require "nvim-treesitter.install".compilers = { "clang" }
+				require("nvim-treesitter.install").compilers = { "clang" }
 			end
 			local configs = require("nvim-treesitter.configs")
 			configs.setup(opts)
 		end,
-		lazy = false
+		lazy = false,
 	},
 	{
 		"luckasRanarison/tree-sitter-hyprlang",
-		dependencies = { "nvim-treesitter/nvim-treesitter" }
-	}
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
 }

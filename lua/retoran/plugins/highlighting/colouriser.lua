@@ -2,7 +2,7 @@ return {
 	"norcalli/nvim-colorizer.lua",
 	main = "colorizer",
 	config = function()
-		require "colorizer".setup()
+		require("colorizer").setup()
 	end,
-	event = "bufEnter"
+	event = "bufEnter",
 }

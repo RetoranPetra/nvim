@@ -10,5 +10,5 @@ return {
 		vim.g.polyglot_disabled = parsers
 	end,
 	event = "bufEnter",
-	enabled = false
+	enabled = false,
 }

@@ -3,14 +3,13 @@ return {
 	-- https://github.com/nvim-neo-tree/neo-tree.nvim
 	"nvim-tree/nvim-tree.lua",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons"
+		"nvim-tree/nvim-web-devicons",
 	},
 	init = function()
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 	end,
-	opts = {
-	},
+	opts = {},
 	-- Takes opts from above.
 	config = function(_, opts)
 		local function open_nvim_tree(data)
@@ -28,5 +27,5 @@ return {
 		require("nvim-tree").setup(opts)
 	end,
 	event = "VimEnter",
-	enabled = not vim.g.neotree
+	enabled = not vim.g.neotree,
 }

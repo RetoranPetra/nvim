@@ -2,5 +2,5 @@ return {
 	"folke/todo-comments.nvim",
 	dependencies = "nvim-lua/plenary.nvim",
 	opts = {},
-	event = "bufEnter"
+	event = "bufEnter",
 }
