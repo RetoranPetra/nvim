@@ -34,7 +34,8 @@ return {
 				"gofumpt",
 				"stylua",
 				"csharpier",
-				"clang-format",
+				-- Clang format depreciated
+				--"clang-format",
 				-- Contains more than just formatter
 				"cmakelang",
 				"beautysh",
