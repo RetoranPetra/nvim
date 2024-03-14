@@ -12,6 +12,9 @@ return {
 			cpp = { "clang-format" },
 			cmake = { "cmake_format" },
 			rust = { "rustfmt" },
+			bash = { "beautysh" },
+			zsh = { "beautysh" },
+			sh = { "beautysh" },
 		},
 		format_on_save = {
 			timeout_ms = 2000,

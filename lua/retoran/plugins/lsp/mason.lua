@@ -16,6 +16,7 @@ return {
 				"gopls",
 				"pylsp",
 				"bashls",
+				"lemminx",
 			},
 		},
 	},
@@ -36,6 +37,7 @@ return {
 				"clang-format",
 				-- Contains more than just formatter
 				"cmakelang",
+				"beautysh",
 			},
 			auto_update = true,
 			run_on_start = true,
