@@ -64,7 +64,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.keymap.set('n', 'gr', vim.lsp.buf.references, temp)
 		-- Format buffer <space>f
 		vim.keymap.set('n', '<space>cf', function()
-			vim.lsp.buf.format { async = true }
+			require"conform".format{ async = true }
 		end, temp)
 	end,
 })
