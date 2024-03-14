@@ -1,6 +1,7 @@
 return {
 	"stevearc/conform.nvim",
 	opts = {
+		-- TODO: Add binding for recursive formatting of all files.
 		formatters_by_ft = {
 			lua = { "stylua" },
 			go = { "gofumpt" },
