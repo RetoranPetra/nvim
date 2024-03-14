@@ -11,6 +11,7 @@ return {
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			cmake = { "cmake_format" },
+			rust = { "rustfmt" },
 		},
 		format_on_save = {
 			timeout_ms = 2000,
