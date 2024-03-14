@@ -27,9 +27,15 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
+				-- Treesitter
 				"tree-sitter-cli",
+				-- # Formatters
 				"gofumpt",
 				"stylua",
+				"csharpier",
+				"clang-format",
+				-- Contains more than just formatter
+				"cmakelang",
 			},
 			auto_update = true,
 			run_on_start = true,
