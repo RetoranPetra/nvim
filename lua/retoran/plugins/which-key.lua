@@ -9,6 +9,5 @@ return {
 		vim.o.timeoutlen = 600
 	end,
 	-- TODO: Name the prefixes after leader
-	opts = {
-	},
+	opts = {},
 }

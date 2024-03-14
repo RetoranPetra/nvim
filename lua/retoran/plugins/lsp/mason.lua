@@ -11,7 +11,7 @@ return {
 				"rust_analyzer",
 				"marksman",
 			},
-		}
+		},
 	},
 	{
 		"williamboman/mason.nvim",
@@ -21,11 +21,11 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		opts = {
 			ensure_installed = {
-				"tree-sitter-cli"
+				"tree-sitter-cli",
 			},
 			auto_update = true,
 			run_on_start = true,
-			debounce_hours = 12
+			debounce_hours = 12,
 		},
 		dependencies = {
 			"williamboman/mason.nvim",

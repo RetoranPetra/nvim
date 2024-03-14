@@ -4,9 +4,9 @@ return {
 		"Hoffs/omnisharp-extended-lsp.nvim",
 		{
 			"williamboman/mason-lspconfig.nvim",
-			dependencies = "williamboman/mason.nvim"
+			dependencies = "williamboman/mason.nvim",
 		},
-		{ "folke/neodev.nvim" }
+		{ "folke/neodev.nvim" },
 	},
 	event = "BufEnter",
 	opts = function(_, opts)
@@ -45,12 +45,12 @@ return {
 		-- Use masonlspconfig to automatically setup our servers.
 		-- See :h mason-lspconfig-automatic-server-setup
 		local lspconf = require("lspconfig")
-		require("mason-lspconfig").setup_handlers {
+		require("mason-lspconfig").setup_handlers({
 			-- The first entry (without a key) will be the default handler
 			-- and will be called for each installed server that doesn't have
 			-- a dedicated handler.
 			function(server_name) -- default handler (optional)
-				lspconf[server_name].setup {}
+				lspconf[server_name].setup({})
 			end,
 			["lua_ls"] = function()
 				require("neodev").setup({})
@@ -58,7 +58,7 @@ return {
 			end,
 			["omnisharp"] = function()
 				lspconf["omnisharp"].setup(opts.omnisharp)
-			end
-		}
-	end
+			end,
+		})
+	end,
 }

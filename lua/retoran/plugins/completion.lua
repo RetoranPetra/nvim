@@ -5,7 +5,7 @@ return {
 		dependencies = {
 			"f3fora/cmp-spell",
 			"L3MON4D3/LuaSnip",
-			{ "hrsh7th/cmp-nvim-lsp",     dependencies = "neovim/nvim-lspconfig" },
+			{ "hrsh7th/cmp-nvim-lsp", dependencies = "neovim/nvim-lspconfig" },
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
@@ -17,7 +17,8 @@ return {
 			local has_words_before = function()
 				unpack = unpack or table.unpack
 				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-				return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+				return col ~= 0
+					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
 
 			local luasnip = require("luasnip")
@@ -27,30 +28,29 @@ return {
 			opts.snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
-				end
+				end,
 			}
 			opts.formatting = {
 				format = lspkind.cmp_format({
-					mode = "symbol"
-				})
+					mode = "symbol",
+				}),
 			}
-			opts.sources = cmp.config.sources(
-				{
-					{ name = "luasnip",  priority = 2 },
-					{ name = "nvim_lsp", priority = 1 }
-				}, {
-					{ name = "buffer" },
-					{ name = "path" }
-				})
+			opts.sources = cmp.config.sources({
+				{ name = "luasnip", priority = 2 },
+				{ name = "nvim_lsp", priority = 1 },
+			}, {
+				{ name = "buffer" },
+				{ name = "path" },
+			})
 			opts.completion = {
-				completeopt = "menu,menuone,noinsert,noselect"
+				completeopt = "menu,menuone,noinsert,noselect",
 			}
 			opts.sorting = {
 				comparators = {
 					cmp.config.compare.exact,
 					cmp.config.compare.offset,
 					cmp.config.compare.recently_used,
-				}
+				},
 			}
 			opts.mapping = {
 				["<Tab>"] = cmp.mapping(function(fallback)
@@ -105,8 +105,8 @@ return {
 			cmp.setup.cmdline(":", {
 				mapping = opts.mapping,
 				sources = {
-					{ name = "cmdline" }
-				}
+					{ name = "cmdline" },
+				},
 			})
 			-- Add one for bash completion for "!" type
 			-- One for lua completion for "lua" type
@@ -116,9 +116,9 @@ return {
 				sources = {
 					{ name = "nvim_lsp" },
 					{ name = "spell" },
-					{ name = "path" }
-				}
+					{ name = "path" },
+				},
 			})
-		end
-	}
+		end,
+	},
 }

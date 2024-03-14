@@ -15,7 +15,7 @@ if vim.g.os == "Windows_NT" and os.getenv("MINGW_CHOST") == "x86_64-w64-mingw32"
 	--vim.opt.shellcmdflag="-c"
 	--vim.opt.shellslash=true
 	--vim.opt.shell="/usr/bin/bash"
-	vim.opt.shell="C:\\Windows\\system32\\cmd.exe"
+	vim.opt.shell = "C:\\Windows\\system32\\cmd.exe"
 	--vim.opt.shell="powershell.exe"
 else
 	vim.g.mingw64 = false

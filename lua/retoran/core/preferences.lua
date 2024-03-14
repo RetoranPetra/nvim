@@ -30,3 +30,4 @@ vim.opt.mouse = "a"
 vim.opt.ttyfast = true
 -- Sync with system clipboard
 vim.opt.clipboard = "unnamedplus"
+vim.g.neotree = true
