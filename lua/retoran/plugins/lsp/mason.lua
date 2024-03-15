@@ -21,6 +21,7 @@ return {
 				"gopls",
 				"pylsp",
 				"bashls",
+				-- TODO: Try making a lemminx plugin that works with xaml.
 				"lemminx",
 			},
 		},
