@@ -6,11 +6,9 @@ return {
 			lua = { "stylua" },
 			go = { "gofumpt" },
 			cs = { "csharpier" },
-			-- clang-format not compiling on windows
-			-- due to insisting on compiling with MSVC
-			-- could possibly try to find an alternative
-			c = { "clang-format" },
-			cpp = { "clang-format" },
+			--cs = { "clang_format" },
+			c = { "clang_format" },
+			cpp = { "clang_format" },
 			cmake = { "cmake_format" },
 			rust = { "rustfmt" },
 			-- NOTE: Beautysh appears to ALWAYS add a new line to the end of file on windows.
