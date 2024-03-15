@@ -5,7 +5,8 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			go = { "gofumpt" },
-			cs = { "csharpier" },
+			-- Csharpier is a little TOO opinionated for me
+			--cs = { "csharpier" },
 			--cs = { "clang_format" },
 			c = { "clang_format" },
 			cpp = { "clang_format" },
@@ -17,6 +18,8 @@ return {
 			zsh = { "beautysh" },
 			sh = { "beautysh" },
 		},
+		-- TODO: Ideally want to swap this so there's a keybind to toggle this on and off.
+		--       will have to make an autocommand instead of letting plugin handle it.
 		format_on_save = {
 			timeout_ms = 2000,
 			lsp_fallback = true,
