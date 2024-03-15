@@ -102,6 +102,7 @@ return {
 			local cmp = require("cmp")
 			cmp.setup(opts)
 			-- Setup for specific types and such inherit from initial setup.
+			-- TODO: Figure out why tab completion is different to the completion that pops up in the command line window.
 			cmp.setup.cmdline(":", {
 				mapping = opts.mapping,
 				sources = {
