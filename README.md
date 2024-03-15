@@ -12,3 +12,4 @@ My own custom config for neovim.
 - [ ] Don't automatically install tools that are already on PATH, and uninstall tools that are on path.
 - [ ] Experiment with [ast-grep](https://github.com/ast-grep/ast-grep)
 - [ ] Find convenient way to place selected word/portion of text in brackets.
+- [ ] Add trouble.nvim again for managing diagnostics.
