@@ -10,6 +10,7 @@ return {
 	},
 	event = "BufEnter",
 	opts = function(_, opts)
+		-- # lua_ls
 		opts.lua_ls = {
 			settings = {
 				Lua = {
@@ -17,6 +18,8 @@ return {
 				},
 			},
 		}
+
+		-- # Omnisharp
 		local path
 		if vim.g.os == "Linux" then
 			-- TODO: This command doesn't seem to be working on ubuntu WSL2. Fix
@@ -42,6 +45,9 @@ return {
 				["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
 			},
 		}
+		opts.lemminx = {
+			filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "xaml" },
+		}
 	end,
 	config = function(_, opts)
 		-- Use masonlspconfig to automatically setup our servers.
@@ -61,6 +67,9 @@ return {
 			["omnisharp"] = function()
 				lspconf["omnisharp"].setup(opts.omnisharp)
 			end,
+			["lemminx"] = function ()
+				lspconf["lemminx"].setup(opts.lemminx)
+			end
 		})
 	end,
 }
