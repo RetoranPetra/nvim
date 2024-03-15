@@ -44,6 +44,7 @@ return {
 				-- Contains more than just formatter
 				"cmakelang",
 				"beautysh",
+				"mdformat",
 			},
 			auto_update = true,
 			run_on_start = true,

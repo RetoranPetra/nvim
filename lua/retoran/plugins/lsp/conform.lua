@@ -17,6 +17,7 @@ return {
 			bash = { "beautysh" },
 			zsh = { "beautysh" },
 			sh = { "beautysh" },
+			markdown = { "mdformat" },
 		},
 		-- TODO: Ideally want to swap this so there's a keybind to toggle this on and off.
 		--       will have to make an autocommand instead of letting plugin handle it.
