@@ -13,6 +13,7 @@ My own custom config for neovim.
 - [ ] Experiment with [ast-grep](https://github.com/ast-grep/ast-grep)
 - [ ] Find convenient way to place selected word/portion of text in brackets.
 - [ ] Add trouble.nvim again for managing diagnostics.
+- [ ] Override comment highlighting with tree-sitter markdown when it's available.
 
 # Requirements
 - ast-grep (Could install, but should really be installed)
