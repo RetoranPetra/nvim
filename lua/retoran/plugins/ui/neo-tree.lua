@@ -9,6 +9,7 @@ return {
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 	end,
+	-- TODO: Add keybind for toggling Neotree.
 	opts = {
 		hide_root_node = true,
 		open_files_do_not_replace_types = {},
