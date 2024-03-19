@@ -41,56 +41,55 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- Buffer local mappings.
 		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		local temp = { buffer = ev.buf }
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {
 			buffer = ev.buf,
-			desc = "Go to declaration",
+			desc = "[LSP] Go to declaration",
 		})
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, {
 			buffer = ev.buf,
-			desc = "Go to definition",
+			desc = "[LSP] Go to definition",
 		})
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, {
 			buffer = ev.buf,
-			desc = "Peek documentation",
+			desc = "[LSP] Peek documentation",
 		})
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {
 			buffer = ev.buf,
-			desc = "Go to implementation",
+			desc = "[LSP] Go to implementation",
 		})
 		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {
 			buffer = ev.buf,
-			desc = "Peek signature help",
+			desc = "[LSP] Peek signature help",
 		})
 		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, {
 			buffer = ev.buf,
-			desc = "Add workspace folder",
+			desc = "[LSP] Add workspace folder",
 		})
 		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, {
 			buffer = ev.buf,
-			desc = "Remove workspace folder",
+			desc = "[LSP] Remove workspace folder",
 		})
 		vim.keymap.set("n", "<space>wl", function()
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, {
 			buffer = ev.buf,
-			desc = "List workspace folders",
+			desc = "[LSP] List workspace folders",
 		})
 		vim.keymap.set("n", "<leader>T", vim.lsp.buf.type_definition, {
 			buffer = ev.buf,
-			desc = "Peek type definition",
+			desc = "[LSP] Peek type definition",
 		})
 		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {
 			buffer = ev.buf,
-			desc = "Rename code element",
+			desc = "[LSP] Rename",
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {
 			buffer = ev.buf,
-			desc = "Code Action",
+			desc = "[LSP] Code Action",
 		})
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, {
 			buffer = ev.buf,
-			desc = "Go to references",
+			desc = "[LSP] Go to references",
 		})
 		vim.keymap.set("n", "<leader>cf", function()
 			require("conform").format({
@@ -99,7 +98,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end, {
 			buffer = ev.buf,
-			desc = "Format Code",
+			desc = "[Conform] Format Code",
 		})
 	end,
 })
