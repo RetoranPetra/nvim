@@ -45,13 +45,13 @@ return {
 			opts.completion = {
 				completeopt = "menu,menuone,noinsert,noselect",
 			}
-			opts.sorting = {
-				comparators = {
-					cmp.config.compare.exact,
-					cmp.config.compare.offset,
-					cmp.config.compare.recently_used,
-				},
-			}
+--			opts.sorting = {
+--				comparators = {
+--					cmp.config.compare.exact,
+--					cmp.config.compare.offset,
+--					cmp.config.compare.recently_used,
+--				},
+--			}
 			opts.mapping = {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
