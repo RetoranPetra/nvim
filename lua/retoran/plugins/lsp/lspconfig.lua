@@ -22,9 +22,8 @@ return {
 		-- # Omnisharp
 		local path
 		if vim.g.os == "Linux" then
-			-- TODO: This command doesn't seem to be working on ubuntu WSL2. Fix
 			path = vim.fn.stdpath("data") .. "/mason/bin/omnisharp"
-		elseif vim.g.os == "Windows_NT" then
+		elseif vim.g.os == "Windows_NT" or vim.g.os == "MINGW32_NT-10.0" then
 			path = vim.fn.stdpath("data") .. "\\mason\\bin\\omnisharp.cmd"
 		end
 		opts.omnisharp = {
