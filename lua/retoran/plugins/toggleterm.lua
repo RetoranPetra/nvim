@@ -15,19 +15,27 @@ return {
 				direction = "float",
 				on_open = function(term)
 					vim.cmd("startinsert!")
-					vim.api.nvim_buf_set_keymap(
-						term.bufnr,
-						"n",
-						"q",
-						"<cmd>close<CR>",
-						{ noremap = true, silent = true }
-					)
-					vim.api.nvim_buf_set_keymap(
-						term.bufnr,
-						"n",
-						"<esc>",
-						"<cmd>lua _Lazygit_toggle()<CR>",
-						{ noremap = true, silent = true }
+					vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {
+						noremap = true,
+						silent = true,
+						desc = "Close Lazygit",
+					})
+					vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<esc>", "<cmd>lua _Lazygit_toggle()<CR>", {
+						noremap = true,
+						silent = true,
+						desc = "Toggle Lazygit",
+					})
+					-- overrides terminal rebind of escape.
+					vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", "<esc>", {
+						noremap = true,
+						silent = true,
+					})
+				end,
+				on_close = function(_)
+					-- refresh neotree filesystem
+					-- Required despite libuv filewatcher due to terminal taking focus it seems?
+					require("neo-tree.sources.filesystem.commands").refresh(
+						require("neo-tree.sources.manager").get_state("filesystem")
 					)
 				end,
 			})
@@ -36,12 +44,11 @@ return {
 				lazygit:toggle()
 			end
 
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>g",
-				"<cmd>lua _Lazygit_toggle()<CR>",
-				{ noremap = true, silent = true }
-			)
+			vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _Lazygit_toggle()<CR>", {
+				noremap = true,
+				silent = true,
+				desc = "Toggle Lazygit",
+			})
 		end,
 	},
 }
