@@ -15,16 +15,13 @@ return {
 
 		wk.register({
 			f = {
-				name = "[F]ind",
-			},
-			g = {
-				name = "[G]it",
+				name = "Find",
 			},
 			c = {
-				name = "[C]ode",
+				name = "Code",
 			},
 			w = {
-				name = "[W]orkspace",
+				name = "Workspace",
 			},
 			t = "ToggleTerm"
 		}, {
