@@ -11,6 +11,7 @@ return {
 			"hrsh7th/cmp-cmdline",
 			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" },
 			"onsails/lspkind.nvim",
+			"windwp/nvim-autopairs",
 		},
 		lazy = false,
 		opts = function(_, opts)
@@ -45,13 +46,13 @@ return {
 			opts.completion = {
 				completeopt = "menu,menuone,noinsert,noselect",
 			}
---			opts.sorting = {
---				comparators = {
---					cmp.config.compare.exact,
---					cmp.config.compare.offset,
---					cmp.config.compare.recently_used,
---				},
---			}
+			--			opts.sorting = {
+			--				comparators = {
+			--					cmp.config.compare.exact,
+			--					cmp.config.compare.offset,
+			--					cmp.config.compare.recently_used,
+			--				},
+			--			}
 			opts.mapping = {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
@@ -120,6 +121,9 @@ return {
 					{ name = "path" },
 				},
 			})
+			-- open ( bracket on function completion.
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
 }
