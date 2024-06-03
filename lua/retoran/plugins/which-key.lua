@@ -26,6 +26,7 @@ return {
 			w = {
 				name = "[W]orkspace",
 			},
+			t = "ToggleTerm"
 		}, {
 			prefix = "<leader>",
 		})
