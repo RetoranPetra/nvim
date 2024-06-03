@@ -22,6 +22,13 @@ return {
 						"<cmd>close<CR>",
 						{ noremap = true, silent = true }
 					)
+					vim.api.nvim_buf_set_keymap(
+						term.bufnr,
+						"n",
+						"<esc>",
+						"<cmd>lua _Lazygit_toggle()<CR>",
+						{ noremap = true, silent = true }
+					)
 				end,
 			})
 			-- Global
