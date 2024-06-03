@@ -26,9 +26,12 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic mes
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
--- Rename buffer easily
-map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Buffer" })
--- TODO: Add Ctrl+Shift+c and Ctrl+Shift+v missing bindings
+
+-- TODO: Get Control + Shift + C maps working.
+
+-- Control + Shift + C bindings, V ones provided by default.
+--map("v", "<C-S-c>", 'y')
+--map("n", "<C-S-c>", 'yy')
 
 -- Enable keybindings
 
@@ -89,7 +92,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			buffer = ev.buf,
 			desc = "[LSP] Rename",
 		})
-		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {
+		vim.keymap.set({ "n", "v" }, "<leader>\\", vim.lsp.buf.code_action, {
 			buffer = ev.buf,
 			desc = "[LSP] Code Action",
 		})
