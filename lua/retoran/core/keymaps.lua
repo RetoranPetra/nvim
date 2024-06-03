@@ -11,6 +11,12 @@ map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+-- Move to window when in terminal using <ctrl> hjkl
+map("t", "<esc>", [[<C-\><c-n>]], { desc = "Escape Terminal" })
+map("t", "<C-h>", [[<Cmd>wincmd h<CR>]], { desc = "Go to left window", remap = true })
+map("t", "<C-j>", [[<Cmd>wincmd j<CR>]], { desc = "Go to lower window", remap = true })
+map("t", "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Go to upper window", remap = true })
+map("t", "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "Go to right window", remap = true })
 
 -- Buffer Navigation
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
