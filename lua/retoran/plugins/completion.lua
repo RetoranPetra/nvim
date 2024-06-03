@@ -44,6 +44,7 @@ return {
 				{ name = "path" },
 			})
 			opts.completion = {
+				-- avoids autoselection
 				completeopt = "menu,menuone,noinsert,noselect",
 			}
 			--			opts.sorting = {
@@ -54,6 +55,8 @@ return {
 			--				},
 			--			}
 			opts.mapping = {
+				-- NOTE: Not quite behaving properly. Make note of when it doesn't behave properly, and then update
+				--       Accordingly.
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
