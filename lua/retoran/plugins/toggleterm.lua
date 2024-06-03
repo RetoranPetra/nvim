@@ -3,9 +3,9 @@ return {
 		"akinsho/toggleterm.nvim",
 		opts = {
 			shade_terminals = false,
-			-- TODO: Put in issue for this to only work in terminal/normal/whatever mode.
-			--       Feels very weird for it to work globally, can't use leader as it interferes with every space press.
-			open_mapping = "<C-\\>",
+			insert_mappings = false,
+			terminal_mappings = false,
+			open_mapping = "<leader>t",
 			on_open = function(term)
 				if term.is_float(term) then
 					vim.cmd("startinsert!")
@@ -64,7 +64,7 @@ return {
 			})
 			vim.api.nvim_set_keymap(
 				"n",
-				"<leader>t",
+				"<leader>s",
 				"<cmd>lua _FloatTerm_toggle()<CR>",
 				{ silent = true, desc = "Toggle FloatTerm" }
 			)
