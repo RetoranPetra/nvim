@@ -7,6 +7,9 @@ return {
 			--       Feels very weird for it to work globally, can't use leader as it interferes with every space press.
 			open_mapping = "<C-\\>",
 			on_open = function(term)
+				if term.is_float(term) then
+					vim.cmd("startinsert!")
+				end
 				vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<esc>", "<cmd>close<CR>", {
 					silent = true,
 				})
@@ -25,7 +28,6 @@ return {
 				direction = "float",
 				on_open = function(term)
 					opts.on_open(term)
-					vim.cmd("startinsert!")
 					-- overrides terminal rebind of escape.
 					vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", "<esc>", {
 						noremap = true,
@@ -45,7 +47,6 @@ return {
 				direction = "float",
 				on_open = function(term)
 					opts.on_open(term)
-					vim.cmd("startinsert!")
 				end,
 			})
 			-- Global
