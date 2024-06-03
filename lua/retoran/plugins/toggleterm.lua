@@ -2,13 +2,15 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		opts = {
-			on_open = function (term)
-				vim.cmd("startinsert!")
-				vim.api.nvim_buf_set_keymap(term.bufnr,"n","<esc>","<cmd>close<CR>",{
+			shade_terminals = false,
+			-- TODO: Put in issue for this to only work in terminal/normal/whatever mode.
+			--       Feels very weird for it to work globally, can't use leader as it interferes with every space press.
+			open_mapping = "<C-\\>",
+			on_open = function(term)
+				vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<esc>", "<cmd>close<CR>", {
 					silent = true,
 				})
 			end,
-			direction = "float",
 		},
 		config = function(_, opts)
 			local toggleterm = require("toggleterm")
@@ -23,6 +25,7 @@ return {
 				direction = "float",
 				on_open = function(term)
 					opts.on_open(term)
+					vim.cmd("startinsert!")
 					-- overrides terminal rebind of escape.
 					vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<esc>", "<esc>", {
 						noremap = true,
@@ -37,9 +40,20 @@ return {
 					)
 				end,
 			})
+			local floatTerm = terminal:new({
+				hidden = true,
+				direction = "float",
+				on_open = function(term)
+					opts.on_open(term)
+					vim.cmd("startinsert!")
+				end,
+			})
 			-- Global
 			function _Lazygit_toggle()
 				lazygit:toggle()
+			end
+			function _FloatTerm_toggle()
+				floatTerm:toggle()
 			end
 
 			vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _Lazygit_toggle()<CR>", {
@@ -47,6 +61,21 @@ return {
 				silent = true,
 				desc = "Toggle Lazygit",
 			})
+			vim.api.nvim_set_keymap(
+				"n",
+				"<leader>t",
+				"<cmd>lua _FloatTerm_toggle()<CR>",
+				{ silent = true, desc = "Toggle FloatTerm" }
+			)
+
+			-- Regular binds
+			vim.api.nvim_set_keymap("n", "<leader>ft", ":TermSelect<CR>", { silent = true, desc = "Find ToggleTerms" })
+			vim.api.nvim_set_keymap(
+				"n",
+				"<leader>z",
+				":ToggleTermToggleAll<CR>",
+				{ silent = true, desc = "Open ToggleTerm" }
+			)
 		end,
 	},
 }
