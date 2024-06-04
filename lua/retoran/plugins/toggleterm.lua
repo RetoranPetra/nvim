@@ -33,6 +33,12 @@ return {
 						noremap = true,
 						silent = true,
 					})
+					-- HACK: Workaround for not msys2 lazygit not working properly with zsh -s command.
+					--       Instead we can enter lazygit command manually, and exit with control-q instead of q.
+					vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-q>", "<cmd>close<CR>",{
+						noremap = true,
+						silent = true,
+					})
 				end,
 				on_close = function(_)
 					-- refresh neotree filesystem
