@@ -10,7 +10,7 @@ opt.compatible = false
 vim.g.os = vim.loop.os_uname().sysname
 if vim.g.os == "MINGW32_NT-10.0" then
 	vim.g.mingw64 = true
-	vim.opt.shellcmdflag="-c"
+	vim.opt.shellcmdflag="-s"
 	vim.opt.shellslash=true
 elseif vim.g.os == "Windows_NT" and os.getenv("MINGW_CHOST") == "x86_64-w64-mingw32" then
 	vim.g.mingw64 = true
