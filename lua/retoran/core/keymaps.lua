@@ -26,6 +26,8 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic mes
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+-- Bind escape to also clear search results
+map("n", "<CR>", [[<CR>:noh<CR>]], { noremap = true, silent = true })
 
 -- TODO: Get Control + Shift + C maps working.
 
