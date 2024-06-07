@@ -6,7 +6,6 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			dependencies = "williamboman/mason.nvim",
 		},
-		{ "folke/neodev.nvim" },
 	},
 	event = "BufEnter",
 	opts = function(_, opts)
@@ -60,7 +59,6 @@ return {
 				lspconf[server_name].setup({})
 			end,
 			["lua_ls"] = function()
-				require("neodev").setup({})
 				lspconf["lua_ls"].setup(opts.lua_ls)
 			end,
 			["omnisharp"] = function()
