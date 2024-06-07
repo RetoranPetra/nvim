@@ -29,5 +29,5 @@ return {
 			},
 		},
 	},
-	enabled = vim.g.neotree,
+	enabled = true,
 }
