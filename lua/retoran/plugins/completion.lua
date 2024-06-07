@@ -47,6 +47,7 @@ return {
 				-- avoids autoselection
 				completeopt = "menu,menuone,noinsert,noselect",
 			}
+			opts.preselect = cmp.PreselectMode.None
 			--			opts.sorting = {
 			--				comparators = {
 			--					cmp.config.compare.exact,
