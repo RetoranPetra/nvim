@@ -50,16 +50,7 @@ return {
 				completeopt = "menu,menuone,noinsert,noselect",
 			}
 			opts.preselect = cmp.PreselectMode.None
-			--			opts.sorting = {
-			--				comparators = {
-			--					cmp.config.compare.exact,
-			--					cmp.config.compare.offset,
-			--					cmp.config.compare.recently_used,
-			--				},
-			--			}
 			opts.mapping = {
-				-- NOTE: Not quite behaving properly. Make note of when it doesn't behave properly, and then update
-				--       Accordingly.
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
@@ -72,7 +63,7 @@ return {
 					else
 						fallback()
 					end
-				end, { "i", "s" }),
+				end, { "i", "s", "c" }),
 
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
@@ -82,7 +73,7 @@ return {
 					else
 						fallback()
 					end
-				end, { "i", "s" }),
+				end, { "i", "s", "c" }),
 
 				["<CR>"] = cmp.mapping({
 					i = function(fallback)
@@ -93,7 +84,6 @@ return {
 						end
 					end,
 					s = cmp.mapping.confirm({ select = true }),
-					--c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 					c = function(fallback)
 						if cmp.visible() and cmp.get_active_entry() then
 							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
@@ -104,21 +94,16 @@ return {
 				}),
 			}
 		end,
-		-- Can't tell if this is working but it seems to be?
 		config = function(_, opts)
 			local cmp = require("cmp")
 			cmp.setup(opts)
 			-- Setup for specific types and such inherit from initial setup.
-			-- TODO: Figure out why tab completion is different to the completion that pops up in the command line window.
 			cmp.setup.cmdline(":", {
 				mapping = opts.mapping,
 				sources = {
 					{ name = "cmdline" },
 				},
 			})
-			-- Add one for bash completion for "!" type
-			-- One for lua completion for "lua" type
-
 			-- Filetype setup
 			cmp.setup.filetype({ "markdown", "txt" }, {
 				sources = {
