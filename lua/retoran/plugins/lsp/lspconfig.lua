@@ -6,10 +6,10 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			dependencies = "williamboman/mason.nvim",
 		},
-		{ "folke/neodev.nvim" },
 	},
 	event = "BufEnter",
 	opts = function(_, opts)
+		-- # lua_ls
 		opts.lua_ls = {
 			settings = {
 				Lua = {
@@ -17,11 +17,12 @@ return {
 				},
 			},
 		}
+
+		-- # Omnisharp
 		local path
 		if vim.g.os == "Linux" then
-			-- TODO: This command doesn't seem to be working on ubuntu WSL2. Fix
 			path = vim.fn.stdpath("data") .. "/mason/bin/omnisharp"
-		elseif vim.g.os == "Windows_NT" then
+		elseif vim.g.os == "Windows_NT" or vim.g.os == "MINGW32_NT-10.0" then
 			path = vim.fn.stdpath("data") .. "\\mason\\bin\\omnisharp.cmd"
 		end
 		opts.omnisharp = {
@@ -34,11 +35,16 @@ return {
 			-- May want to enable these at some point
 			enable_import_completion = false,
 			-- Enable this for omnisharp_extended.
-			enable_rosyln_analyzers = false,
+			enable_rosyln_analyzers = true,
 			-- TODO: Double check if this is working correctly, getting a lot of errors on windows.
 			handlers = {
-				["textDocument/definition"] = require("omnisharp_extended").handler,
+				["textDocument/definition"] = require("omnisharp_extended").definition_handler,
+				["textDocument/references"] = require("omnisharp_extended").references_handler,
+				["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
 			},
+		}
+		opts.lemminx = {
+			filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "xaml" },
 		}
 	end,
 	config = function(_, opts)
@@ -53,12 +59,14 @@ return {
 				lspconf[server_name].setup({})
 			end,
 			["lua_ls"] = function()
-				require("neodev").setup({})
 				lspconf["lua_ls"].setup(opts.lua_ls)
 			end,
 			["omnisharp"] = function()
 				lspconf["omnisharp"].setup(opts.omnisharp)
 			end,
+			["lemminx"] = function ()
+				lspconf["lemminx"].setup(opts.lemminx)
+			end
 		})
 	end,
 }

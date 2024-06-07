@@ -17,12 +17,13 @@ return {
 			bash = { "beautysh" },
 			zsh = { "beautysh" },
 			sh = { "beautysh" },
+			markdown = { "mdformat" },
 		},
 		-- TODO: Ideally want to swap this so there's a keybind to toggle this on and off.
 		--       will have to make an autocommand instead of letting plugin handle it.
-		format_on_save = {
-			timeout_ms = 2000,
-			lsp_fallback = true,
-		},
+		--format_on_save = {
+		--  timeout_ms = 2000,
+		--  lsp_fallback = true,
+		--},
 	},
 }

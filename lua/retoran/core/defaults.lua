@@ -8,16 +8,13 @@ opt.swapfile = false
 opt.compatible = false
 -- Set OS global variable for reference.
 vim.g.os = vim.loop.os_uname().sysname
-if vim.g.os == "Windows_NT" and os.getenv("MINGW_CHOST") == "x86_64-w64-mingw32" then
+if vim.g.os == "MINGW32_NT-10.0" then
 	vim.g.mingw64 = true
-	-- Attempt at making BASH shell work.
-	-- Given up, forcing use of regular cmd.
-	--vim.opt.shellcmdflag="-c"
-	--vim.opt.shellslash=true
-	--vim.opt.shell="/usr/bin/bash"
-	--vim.opt.shell="/usr/bin/zsh"
+	vim.opt.shellcmdflag="-s"
+	vim.opt.shellslash=true
+elseif vim.g.os == "Windows_NT" and os.getenv("MINGW_CHOST") == "x86_64-w64-mingw32" then
+	vim.g.mingw64 = true
 	vim.opt.shell = "C:\\Windows\\system32\\cmd.exe"
-	--vim.opt.shell="powershell.exe"
 else
 	vim.g.mingw64 = false
 end

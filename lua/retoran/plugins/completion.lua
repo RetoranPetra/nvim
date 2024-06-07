@@ -11,6 +11,8 @@ return {
 			"hrsh7th/cmp-cmdline",
 			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" },
 			"onsails/lspkind.nvim",
+			"windwp/nvim-autopairs",
+			"folke/lazydev.nvim",
 		},
 		lazy = false,
 		opts = function(_, opts)
@@ -38,20 +40,16 @@ return {
 			opts.sources = cmp.config.sources({
 				{ name = "luasnip", priority = 2 },
 				{ name = "nvim_lsp", priority = 1 },
+				{ name = "lazydev", priority = 0 },
 			}, {
 				{ name = "buffer" },
 				{ name = "path" },
 			})
 			opts.completion = {
+				-- avoids autoselection
 				completeopt = "menu,menuone,noinsert,noselect",
 			}
-			opts.sorting = {
-				comparators = {
-					cmp.config.compare.exact,
-					cmp.config.compare.offset,
-					cmp.config.compare.recently_used,
-				},
-			}
+			opts.preselect = cmp.PreselectMode.None
 			opts.mapping = {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
@@ -65,7 +63,7 @@ return {
 					else
 						fallback()
 					end
-				end, { "i", "s" }),
+				end, { "i", "s", "c" }),
 
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
@@ -75,7 +73,7 @@ return {
 					else
 						fallback()
 					end
-				end, { "i", "s" }),
+				end, { "i", "s", "c" }),
 
 				["<CR>"] = cmp.mapping({
 					i = function(fallback)
@@ -86,7 +84,6 @@ return {
 						end
 					end,
 					s = cmp.mapping.confirm({ select = true }),
-					--c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 					c = function(fallback)
 						if cmp.visible() and cmp.get_active_entry() then
 							cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
@@ -97,7 +94,6 @@ return {
 				}),
 			}
 		end,
-		-- Can't tell if this is working but it seems to be?
 		config = function(_, opts)
 			local cmp = require("cmp")
 			cmp.setup(opts)
@@ -108,9 +104,6 @@ return {
 					{ name = "cmdline" },
 				},
 			})
-			-- Add one for bash completion for "!" type
-			-- One for lua completion for "lua" type
-
 			-- Filetype setup
 			cmp.setup.filetype({ "markdown", "txt" }, {
 				sources = {
@@ -119,6 +112,9 @@ return {
 					{ name = "path" },
 				},
 			})
+			-- open ( bracket on function completion.
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
 }

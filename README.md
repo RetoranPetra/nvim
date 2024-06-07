@@ -12,3 +12,15 @@ My own custom config for neovim.
 - [ ] Don't automatically install tools that are already on PATH, and uninstall tools that are on path.
 - [ ] Experiment with [ast-grep](https://github.com/ast-grep/ast-grep)
 - [ ] Find convenient way to place selected word/portion of text in brackets.
+- [ ] Add trouble.nvim again for managing diagnostics.
+- [ ] Override comment highlighting with tree-sitter markdown when it's available.
+
+# Requirements
+- ast-grep (Could install, but should really be installed)
+- rustfmt (Can't be installed by mason, needs to be via rustup)
+- fzf
+- ripgrep
+- fd
+- npm
+- cargo
+- pip

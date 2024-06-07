@@ -21,6 +21,7 @@ return {
 				"gopls",
 				"pylsp",
 				"bashls",
+				-- TODO: Try making a lemminx plugin that works with xaml.
 				"lemminx",
 			},
 		},
@@ -44,6 +45,7 @@ return {
 				-- Contains more than just formatter
 				"cmakelang",
 				"beautysh",
+				"mdformat",
 			},
 			auto_update = true,
 			run_on_start = true,

@@ -8,6 +8,24 @@ return {
 		vim.o.timeout = true
 		vim.o.timeoutlen = 600
 	end,
-	-- TODO: Name the prefixes after leader
 	opts = {},
+	config = function(_, opts)
+		local wk = require("which-key")
+		wk.setup(opts)
+
+		wk.register({
+			f = {
+				name = "Find",
+			},
+			c = {
+				name = "Code",
+			},
+			w = {
+				name = "Workspace",
+			},
+			t = "ToggleTerm"
+		}, {
+			prefix = "<leader>",
+		})
+	end,
 }
