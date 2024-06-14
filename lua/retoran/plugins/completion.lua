@@ -12,7 +12,6 @@ return {
 			{ "saadparwaiz1/cmp_luasnip", dependencies = "L3MON4D3/LuaSnip" },
 			"onsails/lspkind.nvim",
 			"windwp/nvim-autopairs",
-			"folke/lazydev.nvim",
 		},
 		lazy = false,
 		opts = function(_, opts)
@@ -40,7 +39,6 @@ return {
 			opts.sources = cmp.config.sources({
 				{ name = "luasnip", priority = 2 },
 				{ name = "nvim_lsp", priority = 1 },
-				{ name = "lazydev", priority = 0 },
 			}, {
 				{ name = "buffer" },
 				{ name = "path" },
