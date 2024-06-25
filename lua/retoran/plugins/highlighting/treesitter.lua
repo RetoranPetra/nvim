@@ -30,7 +30,6 @@ return {
 					-- TODO: Should automatically install hyprlang somehow.
 				}
 			end
-			opts.sync_install = true
 		end,
 		build = function()
 			require("nvim-treesitter.install").update({ with_sync = true })()
