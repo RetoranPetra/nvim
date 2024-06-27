@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = function(_, opts)
-			if vim.g.os == "Linux" or vim.g.mingw64 == true then
+			if vim.g.os == "Linux" or vim.g.mingw64 then
 				opts.indent = { enable = true }
 				opts.highlight = { enable = true }
 				opts.auto_install = true
@@ -35,7 +35,7 @@ return {
 			require("nvim-treesitter.install").update({ with_sync = true })()
 		end,
 		config = function(_, opts)
-			if vim.g.os == "Windows_NT" then
+			if vim.g.os == "Windows_NT" or vim.g.mingw64 then
 				require("nvim-treesitter.install").compilers = { "clang" }
 			end
 			local configs = require("nvim-treesitter.configs")
