@@ -28,6 +28,22 @@ return {
 				leave_dirs_open = false,
 			},
 		},
+		window = {
+			position = "current",
+		},
 	},
-	enabled = vim.g.neotree,
+	config = function(_, opts)
+		local neotree = require("neo-tree")
+		neotree.setup(opts)
+
+		vim.keymap.set("n", "<leader>z", [[:Neotree buffers position=float<CR>]], {
+			silent = true,
+			desc = "Neotree buffers"
+		})
+		vim.keymap.set("n", "<leader>x", [[:Neotree toggle position=float<CR>]], {
+			silent = true,
+			desc = "Neotree"
+		})
+	end,
+	enabled = true,
 }

@@ -40,13 +40,6 @@ return {
 						silent = true,
 					})
 				end,
-				on_close = function(_)
-					-- refresh neotree filesystem
-					-- Required despite libuv filewatcher due to terminal taking focus it seems?
-					require("neo-tree.sources.filesystem.commands").refresh(
-						require("neo-tree.sources.manager").get_state("filesystem")
-					)
-				end,
 			})
 			local floatTerm = terminal:new({
 				hidden = true,
@@ -77,12 +70,6 @@ return {
 
 			-- Regular binds
 			vim.api.nvim_set_keymap("n", "<leader>ft", ":TermSelect<CR>", { silent = true, desc = "Find ToggleTerms" })
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>z",
-				":ToggleTermToggleAll<CR>",
-				{ silent = true, desc = "Open ToggleTerm" }
-			)
 		end,
 	},
 }
