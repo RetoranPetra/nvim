@@ -14,6 +14,10 @@ return {
 		hide_root_node = true,
 		open_files_do_not_replace_types = {},
 		filesystem = {
+			cwd_target = {
+				-- fixes issue where directory chosen with nvim $DIR doesn't have neo-tree start in that directory.
+				current = "global",
+			},
 			follow_current_file = {
 				enabled = true,
 				leave_dirs_open = false,
@@ -36,8 +40,14 @@ return {
 		local neotree = require("neo-tree")
 		neotree.setup(opts)
 
-		vim.keymap.set("n", "<leader>z", [[:Neotree buffers position=float<CR>]], { silent = true })
-		vim.keymap.set("n", "<leader>x", [[:Neotree toggle position=float<CR>]], { silent = true })
+		vim.keymap.set("n", "<leader>z", [[:Neotree buffers position=float<CR>]], {
+			silent = true,
+			desc = "Neotree buffers"
+		})
+		vim.keymap.set("n", "<leader>x", [[:Neotree toggle position=float<CR>]], {
+			silent = true,
+			desc = "Neotree"
+		})
 	end,
 	enabled = true,
 }
