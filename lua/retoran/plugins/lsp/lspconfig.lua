@@ -44,7 +44,15 @@ return {
 			},
 		}
 		opts.lemminx = {
-			filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "xaml" },
+			filetypes = {
+				"xml",
+				"xsd",
+				"xsl",
+				"xslt",
+				"svg",
+				"xaml",
+				"axaml",
+			},
 		}
 	end,
 	config = function(_, opts)
