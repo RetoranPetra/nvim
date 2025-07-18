@@ -1,6 +1,9 @@
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	desc = "Set filetype for xml-like files without types to xml.",
-	pattern = { "*.xaml" },
+	pattern = {
+		"*.xaml",
+		"*.axaml",
+	},
 	command = "set filetype=xml",
 })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
