@@ -6,29 +6,7 @@ return {
 				opts.indent = { enable = true }
 				opts.highlight = { enable = true }
 				opts.auto_install = true
-				opts.ensure_installed = {
-					"c",
-					"lua",
-					"vim",
-					"vimdoc",
-					"query",
-					"regex",
-					"bash",
-					"markdown",
-					"markdown_inline",
-					"gitcommit",
-					"git_config",
-					"git_rebase",
-					"gitattributes",
-					"gitignore",
-					"cmake",
-					"make",
-					"luadoc",
-					-- Install hyprlang with TSInstall after treesitter has initialised.
-					--"hyprlang"
-
-					-- TODO: Should automatically install hyprlang somehow.
-				}
+				opts.ensure_installed = { }
 			end
 			opts.sync_install = true
 		end,
