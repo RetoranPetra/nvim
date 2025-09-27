@@ -28,6 +28,8 @@ let
 	packpath = runCommandLocal "packpath" {} ''
 		mkdir -p $out/pack/${packageName}/{start,opt}
 
+		ln -vsfT ${./retoran-conf} $out/pack/${packageName}/start/retoran-conf
+
 		${
 		lib.concatMapStringsSep
 		"\n"
@@ -43,7 +45,7 @@ in
 		postBuild = ''
 			wrapProgram $out/bin/nvim \
 			--add-flags '-u' \
-			--add-flags '${./init.lua}' \
+			--add-flags 'NORC' \
 			--add-flags '--cmd' \
 			--add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
 			--set-default NVIM_APPNAME nvim-retoran
