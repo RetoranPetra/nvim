@@ -11,14 +11,15 @@ let
 
 	# These are loaded on startup.
 	startPlugins = with vimPlugins; [
-		telescope-nvim
-		nvim-treesitter.withAllGrammars
-		nightfly
+		lz-n
 	];
 
 	# Optional plugins
 	optPlugins = with vimPlugins; [
-
+		nightfly
+		telescope-nvim
+		nvim-treesitter.withAllGrammars
+		neo-tree-nvim
 	];
 
 	foldPlugins = builtins.foldl' (
