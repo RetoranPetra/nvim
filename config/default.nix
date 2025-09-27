@@ -3,5 +3,6 @@
   imports = [
     ./ui.nix
     ./colorscheme.nix
+    ./defaults.nix
   ];
 }
