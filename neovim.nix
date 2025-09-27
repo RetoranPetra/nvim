@@ -16,6 +16,8 @@ let
 		nvim-treesitter.withAllGrammars
 		neo-tree-nvim
 		bufferline-nvim
+		plenary-nvim
+		nvim-web-devicons
 	];
 
 	foldPlugins = builtins.foldl' (

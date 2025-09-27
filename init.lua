@@ -60,10 +60,10 @@ vim.opt.clipboard = "unnamedplus"
 
 -- plugins
 
---require"nvim-web-devicons".setup{}
---require"plenary.nvim".setup{}
---require"nui.nvim".setup{}
---require"bufferline.nvim".setup{}
+require"nvim-web-devicons".setup()
+require"plenary.nvim".setup()
+require"nui.nvim".setup()
+require"bufferline.nvim".setup()
 require("nvim-treesitter.configs").setup({
 	indent = {
 		enable = true,
