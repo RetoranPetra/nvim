@@ -4,5 +4,6 @@
     ./ui.nix
     ./colorscheme.nix
     ./defaults.nix
+    ./preferences.nix
   ];
 }
