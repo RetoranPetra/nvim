@@ -11,12 +11,6 @@ let
 
 	# These are loaded on startup.
 	startPlugins = with vimPlugins; [
-		lz-n
-		lzn-auto-require
-	];
-
-	# Optional plugins
-	optPlugins = with vimPlugins; [
 		nightfly
 		telescope-nvim
 		nvim-treesitter.withAllGrammars
@@ -34,24 +28,15 @@ let
 		) [];
 
 	startPluginsWithDeps = lib.unique (foldPlugins startPlugins);
-	optPluginsWithDeps = lib.unique (foldPlugins optPlugins);
 
 	packpath = runCommandLocal "packpath" {} ''
 		mkdir -p $out/pack/${packageName}/{start,opt}
-
-		ln -vsfT ${./retoran-conf} $out/pack/${packageName}/start/retoran-conf
 
 		${
 		lib.concatMapStringsSep
 		"\n"
 		(plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/start/${lib.getName plugin}")
 		startPluginsWithDeps
-	}
-		${
-		lib.concatMapStringsSep
-		"\n"
-		(plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/opt/${lib.getName plugin}")
-		optPluginsWithDeps
 	}
 	'';
 in
@@ -62,7 +47,7 @@ in
 		postBuild = ''
 			wrapProgram $out/bin/nvim \
 			--add-flags '-u' \
-			--add-flags 'NORC' \
+			--add-flags '${./init.lua}' \
 			--add-flags '--cmd' \
 			--add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
 			--set-default NVIM_APPNAME nvim-retoran
