@@ -12,6 +12,7 @@ let
 	# These are loaded on startup.
 	startPlugins = with vimPlugins; [
 		lz-n
+		lzn-auto-require
 	];
 
 	# Optional plugins
