@@ -21,6 +21,7 @@ let
 		telescope-nvim
 		nvim-treesitter.withAllGrammars
 		neo-tree-nvim
+		bufferline-nvim
 	];
 
 	foldPlugins = builtins.foldl' (
