@@ -10,14 +10,14 @@ let
 	packageName = "mypackage";
 
 	# These are loaded on startup.
-	startPlugins = [
-		vimPlugins.telescope-nvim
-		vimPlugins.nvim-treesitter.withAllGrammars
-		vimPlugins.nightfly
+	startPlugins = with vimPlugins; [
+		telescope-nvim
+		nvim-treesitter.withAllGrammars
+		nightfly
 	];
 
 	# Optional plugins
-	optPlugins = [
+	optPlugins = with vimPlugins; [
 
 	];
 
