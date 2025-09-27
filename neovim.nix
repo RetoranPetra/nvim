@@ -25,13 +25,16 @@ let
 	'';
 in
 	symlinkJoin {
-		name = "neovim-custom";
+		name = "neovim-retoran";
 		paths = [neovim-unwrapped];
 		nativeBuildInputs = [makeWrapper];
 		postBuild = ''
 			wrapProgram $out/bin/nvim \
 			--add-flags '-u' \
-			--add-flags '${./init.lua}'
+			--add-flags '${./init.lua}' \
+			--add-flags '--cmd' \
+			--add-flags "'set packpath^=${packpath} | set runtimepath^=${packpath}'" \
+			--set-default NVIM_APPNAME nvim-retoran
 		'';
 		passthru = {
 			inherit packpath;
