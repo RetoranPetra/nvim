@@ -10,9 +10,21 @@ let
 	packageName = "mypackage";
 
 	startPlugins = [
-		vimPlugins.plenary-nvim
 		vimPlugins.telescope-nvim
+		vimPlugins.nvim-treesitter.withAllGrammars
 	];
+
+	foldPlugins = builtins.foldl' (
+		acc: next:
+			acc
+			++ [
+				next
+			]
+			++ (foldPlugins (next.dependencies or []))
+		) [];
+
+	startPluginsWithDeps = lib.unique (foldPlugins startPlugins);
+
 	packpath = runCommandLocal "packpath" {} ''
 		mkdir -p $out/pack/${packageName}/{start,opt}
 
@@ -20,7 +32,7 @@ let
 		lib.concatMapStringsSep
 		"\n"
 		(plugin: "ln -vsfT ${plugin} $out/pack/${packageName}/start/${lib.getName plugin}")
-		startPlugins
+		startPluginsWithDeps
 	}
 	'';
 in
