@@ -1,13 +1,7 @@
 {
   plugins = {
-    /*
-    lspkind = {
-      enable = true;
-      settings.mode = "symbol";
-    };
-    */
     luasnip.enable = true;
-
+    blink-cmp-spell.enable = true;
     blink-cmp = {
       enable = true;
       setupLspCapabilities = true;
@@ -21,6 +15,25 @@
           };
           accept.auto_brackets.enabled = true;
         };
+        sources = {
+          default = [
+            "lsp"
+            "path"
+            "buffer"
+          ];
+          per_filetype = {
+            markdown = [
+              "lsp"
+              "path"
+              "spell"
+            ];
+            txt = [
+              "spell"
+              "buffer"
+            ];
+          };
+        };
+        #fuzzy.use_typo_resistance = false;
         keymap = {
           "<Tab>" = [
             "select_next"
@@ -37,12 +50,5 @@
         };
       };
     };
-
-    # Old packages, not yet converted to blink-cmp.
-#    cmp-nvim-lsp.enable = true;
-#    cmp-path.enable = true;
-#    cmp-buffer.enable = true;
-#    cmp-cmdline.enable = true;
-#    cmp-spell.enable = true;
   };
 }
