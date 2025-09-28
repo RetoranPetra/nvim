@@ -65,6 +65,5 @@
         };
       };
     };
-    web-devicons.enable = true;
   };
 }

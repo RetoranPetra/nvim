@@ -5,9 +5,9 @@
     ./colorscheme.nix
     ./defaults.nix
     ./preferences.nix
-    ./pairs.nix
     ./sleuth.nix
     ./telescope.nix
     ./which-key.nix
+    ./mini.nix
   ];
 }
