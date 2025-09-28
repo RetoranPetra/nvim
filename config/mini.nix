@@ -6,6 +6,7 @@
       icons = {};
       pairs = {};
       surround = {};
+      comment = {};
     };
   };
 }
