@@ -10,6 +10,7 @@
     ./colorscheme.nix
     ./defaults.nix
     ./preferences.nix
+    ./keymaps.nix
     ./sleuth.nix
     ./telescope.nix
     ./which-key.nix
