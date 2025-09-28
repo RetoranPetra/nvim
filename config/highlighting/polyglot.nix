@@ -1,4 +1,4 @@
-# Need to adapt over that bit of code that enables parsers that aren't in nvim-treesitter
+# TODO: Write polyglot module for languages not highlighted in tree-sitter.
 {
 
 }
