@@ -2,10 +2,7 @@
   # Import all your configuration modules here
   imports = [
     ./ui
-
     ./highlighting
-
-    ./git
 
     ./colorscheme.nix
     ./defaults.nix
