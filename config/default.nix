@@ -6,5 +6,7 @@
     ./defaults.nix
     ./preferences.nix
     ./pairs.nix
+    ./sleuth.nix
+    ./telescope.nix
   ];
 }
