@@ -1,3 +1,4 @@
+{ nixpkgs, ... }:
 {
   plugins.toggleterm = {
     enable = true;
@@ -5,16 +6,7 @@
       shade_terminals = false;
       insert_mappings = false;
       terminal_mappings = false;
-      on_open = ''
-        function(term)
-          if term.is_float(term) then
-            vim.cmd("startinsert!")
-          end
-          vim.api.nvim_buf_set_keymap(term.bufnr, "n", "<esc>", "<cmd>close<CR>", {
-            silent = true,
-          })
-        end
-      '';
+      on_open = builtins.readFile ./toggleterm-on_open.lua;
       open_mapping = "[[<leader>t]]";
     };
   };
