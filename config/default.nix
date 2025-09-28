@@ -1,7 +1,7 @@
 {
   # Import all your configuration modules here
   imports = [
-    ./ui.nix
+    ./ui
     ./colorscheme.nix
     ./defaults.nix
     ./preferences.nix
