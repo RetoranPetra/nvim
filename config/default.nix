@@ -5,5 +5,6 @@
     ./colorscheme.nix
     ./defaults.nix
     ./preferences.nix
+    ./pairs.nix
   ];
 }
