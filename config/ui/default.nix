@@ -6,5 +6,6 @@
     ./dressing.nix
     ./neo-tree.nix
     ./bufferline.nix
+    ./toggleterm.nix
   ];
 }
