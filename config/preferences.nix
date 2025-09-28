@@ -1,6 +1,6 @@
 {
   globals = {
-    mapleader = "";
+    mapleader = " ";
   };
   globalOpts = {
     # Display
