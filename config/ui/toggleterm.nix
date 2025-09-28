@@ -23,6 +23,12 @@
     }
     {
       mode = "n";
+      key = "<leader>g";
+      action = "<cmd>lua _Lazygit_toggle()<CR>";
+      options = { silent = true; desc = "Lazygit"; };
+    }
+    {
+      mode = "n";
       key = "<leader>ft";
       action = ":TermSelect<CR>";
       options = {
