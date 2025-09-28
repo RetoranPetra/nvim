@@ -7,6 +7,8 @@
       pairs = {};
       surround = {};
       comment = {};
+      git = {};
+      diff = {};
     };
   };
 }
