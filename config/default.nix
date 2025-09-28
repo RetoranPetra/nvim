@@ -8,5 +8,6 @@
     ./pairs.nix
     ./sleuth.nix
     ./telescope.nix
+    ./which-key.nix
   ];
 }
