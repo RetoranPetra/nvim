@@ -29,4 +29,24 @@
       };
     };
   };
+  keymaps = [
+    {
+      mode = "n";
+      key = "<leader>z";
+      action = "[[:Neotree buffers position=float<CR>]]";
+      options = {
+        silent = true;
+        desc = "Neotree Buffers";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>x";
+      action = "[[:Neotree toggle position=float<CR>]]";
+      options = {
+        silent = true;
+        desc = "Neotree";
+      };
+    }
+  ];
 }
