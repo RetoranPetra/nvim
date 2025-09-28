@@ -8,6 +8,8 @@
     cmp-nvim-lsp.enable = true;
     cmp-path.enable = true;
     cmp-buffer.enable = true;
+    cmp-cmdline.enable = true;
+    cmp-spell.enable = true;
     cmp = {
       enable = true;
       settings = {
@@ -39,6 +41,7 @@
                   and vim.api.nvim_buf_get_lines(0, line -1, line, true)[1]:sub(col, col):match("%s") == nil
               end
               local cmp = require'cmp'
+              local luasnip = require'luasnip'
               if cmp.visible() then
                 cmp.select_next_item()
                 -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
@@ -50,7 +53,7 @@
               else
                 fallback()
               end
-            end, {"i","s","c"})
+            end, {"i","s"})
           '';
           "<S-Tab>" =
             ''
@@ -90,4 +93,23 @@
       };
     };
   };
+  extraConfigLuaPost =
+    ''
+      local cmp = require'cmp'
+      -- Setup commandline
+      cmp.setup.cmdline(":", {
+        sources = {
+          { name = "cmdline" },
+        }
+      })
+      -- Setup for text formats
+      cmp.setup.filetype({"markdown", "txt"}, {
+        sources = {
+          { name = "nvim_lsp" },
+          { name = "spell" },
+          { name = "path" },
+        },
+      })
+      -- TODO: add auto pairs for completion.
+    '';
 }
