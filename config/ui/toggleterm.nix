@@ -1,4 +1,3 @@
-{ nixpkgs, ... }:
 {
   plugins.toggleterm = {
     enable = true;
