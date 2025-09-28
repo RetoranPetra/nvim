@@ -3,6 +3,7 @@
   imports = [
     ./ui
     ./highlighting
+    ./code
 
     ./colorscheme.nix
     ./defaults.nix
