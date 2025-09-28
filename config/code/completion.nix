@@ -11,6 +11,31 @@
     blink-cmp = {
       enable = true;
       setupLspCapabilities = true;
+      settings = {
+        completion = {
+          list = {
+            selection = {
+              preselect = false;
+              auto_insert = false;
+            };
+          };
+          accept.auto_brackets.enabled = true;
+        };
+        keymap = {
+          "<Tab>" = [
+            "select_next"
+            "fallback"
+          ];
+          "<S-Tab>" = [
+            "select_prev"
+            "fallback"
+          ];
+          "<CR>" = [
+            "select_and_accept"
+            "fallback"
+          ];
+        };
+      };
     };
 
     # Old packages, not yet converted to blink-cmp.
