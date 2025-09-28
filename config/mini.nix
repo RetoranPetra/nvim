@@ -5,6 +5,7 @@
     modules = {
       icons = {};
       pairs = {};
+      surround = {};
     };
   };
 }
