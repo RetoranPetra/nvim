@@ -15,12 +15,28 @@
           };
           accept.auto_brackets.enabled = true;
         };
+        snippets = { preset = "luasnip";};
         sources = {
           default = [
+            "snippets"
             "lsp"
             "path"
             "buffer"
           ];
+          providers = {
+            snippets = {
+              score_offset = 4;
+            };
+            lsp = {
+              score_offset = 3;
+            };
+            path = {
+              score_offset = 2;
+            };
+            buffer = {
+              score_offset = 2;
+            };
+          };
           per_filetype = {
             markdown = [
               "lsp"
