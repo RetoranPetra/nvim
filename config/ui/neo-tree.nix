@@ -7,7 +7,7 @@
 
   plugins.neo-tree = {
     enable = true;
-    extraOptions = {
+    settings = {
       hide_root_node = true;
       filesystem = {
         cwd_target.current = "global";
