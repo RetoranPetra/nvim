@@ -3,12 +3,12 @@
     enable = true;
     mockDevIcons = true;
     modules = {
-      icons = {};
-      pairs = {};
-      surround = {};
-      comment = {};
-      git = {};
-      diff = {};
+      icons = { };
+      pairs = { };
+      surround = { };
+      comment = { };
+      git = { };
+      diff = { };
     };
   };
 }

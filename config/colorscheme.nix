@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  extraPlugins = [pkgs.vimPlugins.nightfly];
+  extraPlugins = [ pkgs.vimPlugins.nightfly ];
   globals = {
     nightflyTransparent = true;
     nightflyItalics = true;

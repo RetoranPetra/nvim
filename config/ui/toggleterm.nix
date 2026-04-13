@@ -24,7 +24,10 @@
       mode = "n";
       key = "<leader>g";
       action = "<cmd>lua _Lazygit_toggle()<CR>";
-      options = { silent = true; desc = "Lazygit"; };
+      options = {
+        silent = true;
+        desc = "Lazygit";
+      };
     }
     {
       mode = "n";
