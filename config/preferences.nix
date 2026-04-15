@@ -10,7 +10,7 @@
     conceallevel = 3;
     showmatch = true;
     list = true;
-    scrolloff = 4;
+    scrolloff = 0;
 
     # Line number
     number = true;
