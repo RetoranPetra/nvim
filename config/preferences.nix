@@ -21,6 +21,7 @@
     smartindent = true;
     shiftwidth = 2;
     shiftround = true;
+    expandtab = true;
 
     spelllang = [ "en_gb" ];
 
