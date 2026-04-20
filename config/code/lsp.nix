@@ -27,7 +27,9 @@
       { mode = "n"; key = "<leader>r"; lspBufAction = "rename"; }
       { mode = "n"; key = "<leader>."; lspBufAction = "code_action"; }
       { mode = "n"; key = "gr"; lspBufAction = "references"; }
-      # Add format code when we've set up conform.
+
+      # Replace with conform at some point
+      { mode = "n"; key = "<leader>cf"; lspBufAction = "format"; }
     ];
   };
 }
