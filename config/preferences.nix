@@ -18,6 +18,7 @@
 
     # Tabs and indenting
     tabstop = 2;
+    softtabstop = -1; # Uses shiftwidth when -1
     smartindent = true;
     shiftwidth = 2;
     shiftround = true;
