@@ -13,6 +13,7 @@
       gopls.enable = true;
       pylsp.enable = true;
       lemminx.enable = true;
+      ts_ls.enable = true;
     };
     keymaps = [
       # TODO: Can maybe replace "gd" with telescope gd.
