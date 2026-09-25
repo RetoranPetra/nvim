@@ -36,6 +36,12 @@
             buffer = {
               score_offset = 2;
             };
+            spell = {
+              score_offset = 2;
+              name = "Spell";
+              module = "blink-cmp-spell";
+              opts = {};
+            };
           };
           per_filetype = {
             markdown = [
