@@ -11,7 +11,7 @@
       omnisharp.enable = true;
       rust_analyzer.enable = true;
       gopls.enable = true;
-      pylsp.enable = true;
+      pyright.enable = true;
       lemminx.enable = true;
       ts_ls.enable = true;
     };
